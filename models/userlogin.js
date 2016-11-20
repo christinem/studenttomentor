@@ -10,8 +10,8 @@ module.exports = function () {
                 .then(function(user){
                 
                     if(!user)
-                      // if the user is not exist
-                      return done(null, false, {message: "The user is not exist"});
+                      // if the user does not exist
+                      return done(null, false, {message: "The user does not exist"});
                     else if(password != user.password)
                       // if password does not match
                       return done(null, false, {message: "Wrong password"});
