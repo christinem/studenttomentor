@@ -28,14 +28,14 @@ module.exports = function () {
     ));
 
     passport.serializeUser(function(user, done) {
-      done(null, user.uID);
+      done(null, user.id);
     });
 
 
     passport.deserializeUser(function(uid, done) {
         Models.User.findOne({
             where: {
-                'uID': uid
+                'id': uid
             }
         }).then(function (user) {
             if (user == null) {
