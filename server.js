@@ -6,9 +6,12 @@ var passport = require('passport');
 var session = require('express-session');
 var connection = require('./models/sequelize.js');
 
-var routes = require('./routes/index');
+var user_routes = require('./routes/users');
 
 var app = express();
+
+app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,14 +27,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+// app.use(function(req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
+
+app.get('/users', user_routes.findUsers);
+app.get('/users/admins', user_routes.findAdmins);
+app.get('/users/mentors', user_routes.findMentors);
+app.get('/users/students', user_routes.findStudents);
 
 app.listen(3000);
 console.log('Listening on port 3000');
