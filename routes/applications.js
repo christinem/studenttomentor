@@ -26,5 +26,13 @@ app.post('/applications', function(req, res) {
     Models.Application.create(newApplication).then(return "Successfully created application");
 });
 
+app.put('/applications', function(req, res) {
+
+});
+
+app.delete('/applications', function(req, res) {
+
+});
+
 
 module.exports = app;
