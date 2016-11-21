@@ -1,12 +1,12 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var Models = require('./models.js');
+var Users = require('./user_models.js');
 
 module.exports = function () { 
 
     passport.use('local', new LocalStrategy(
         function(username, password, done) {
-            Models.User.findOne( { where: { username: username}} )
+            Users.User.findOne( { where: { username: username}} )
                 .then(function(user){
                 
                     if(!user)
@@ -33,7 +33,7 @@ module.exports = function () {
 
 
     passport.deserializeUser(function(uid, done) {
-        Models.User.findOne({
+        Users.User.findOne({
             where: {
                 'uID': uid
             }
