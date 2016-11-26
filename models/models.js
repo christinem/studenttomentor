@@ -14,7 +14,7 @@ var User = connection.define('users', {
  	password: { 
  		type: Sequelize.STRING 
  	}, 
- 	type_of_mentor: {
+ 	type_of_user: {
  		type: Sequelize.STRING
  	},
  	gender: {
@@ -51,7 +51,10 @@ var Application = connection.define('applications', {
     },
     mentor_prefs: { 
         type: Sequelize.STRING 
-    }, 
+    },
+    year: {
+        type: Sequelize.INTEGER
+    } ,
     uID: {
         type: Sequelize.INTEGER,
         references: {
@@ -65,14 +68,14 @@ connection.sync({force: true})
     .then(function(err) {
         User.create({first_name: "Christine", last_name: "Murad", gender: "Female", 
         	student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
-        	type_of_mentor: "s", email: "hello@hello.com", password: 'hello'});
+        	type_of_user: "s", email: "hello@hello.com", password: 'hello'});
 
-        User.create({first_name: "Christina", last_name: "Chen", type_of_mentor: "a", 
+        User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
         	email: "goodbye@goodbye.com", password: 'goodbye'});
 
         User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
         	birthday: "September 6, 2016", about_text: "Hello",
-        	type_of_mentor: "m", email: "cookies@cookies.com", password: 'cookies'});
+        	type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
     });
 
 module.exports.User = User;

@@ -41,9 +41,21 @@ app.get('/current_user', function(req, res) {
 
 // ---------- Routes for Users ---------- //
 app.get('/users', user_routes.findUsers);
+
 app.get('/users/admins', user_routes.findAdmins);
+app.post('/users/admins', user_routes.addAdmin);
+app.put('/users/admins', user_routes.updateAdmin);
+app.delete('/users/admins', user_routes.deleteAdmin);
+
 app.get('/users/mentors', user_routes.findMentors);
+app.post('/users/mentors', user_routes.addMentor);
+app.put('/users/mentors', user_routes.updateMentor);
+app.delete('users/mentors', user_routes.deleteMentor);
+
 app.get('/users/students', user_routes.findStudents);
+app.post('/users/students', user_routes.addStudent);
+app.put('/users/students', user_routes.updateStudent);
+app.delete('/users/students', user_routes.deleteStudent);
 
 // --------- HTML Routes ------------ //
 var auth = function(req, res, next) { 
