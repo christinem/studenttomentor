@@ -1,15 +1,5 @@
 #login_form {
-    position: fixed;
-    margin-top: -100px;
-    margin-left: -200px;
-    border-radius: 10px;
-    width: 400px;
-    height: 250px;
-    border: 1px solid black;
-    top: 50%;
-    left: 50%;
-    overflow: auto;
-    text-align: center;
+  text-align: center;
 }
 
 #login_button {

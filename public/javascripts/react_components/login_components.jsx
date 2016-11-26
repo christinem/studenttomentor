@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import NavBar from "./common_components.jsx";
+import {NavBar, Panel} from "./common_components.jsx";
 
 var LoginPage = React.createClass({
   render: function() {
@@ -9,7 +9,7 @@ var LoginPage = React.createClass({
         <NavBar />
 
         <div className="page-header">
-          <h1 className="title"> Login: </h1>
+          <h1 className="title"> Welcome to StudentToMentor! </h1>
         </div>
 
         <LoginForm />
@@ -21,14 +21,20 @@ var LoginPage = React.createClass({
 var LoginForm = React.createClass({
   render: function() {
     return (
-      <form id="login_form" className="container" action="/login" method="post">
-        <p> Email: </p> <input type="text" name="username" placeholder="Email" />
-        <p> Password: </p> <input type="password" name="password" placeholder="Password" />
-        <input id="login_button" 
-               className="btn btn-default" 
-               type="submit" 
-               value="Login" />
-      </form>
+      <div className="container">
+        <div className="col-md-4 col-md-offset-4">
+          <Panel title="Login">
+            <form id="login_form" action="/login" method="post">
+              <p> Email: </p> <input type="text" name="username" placeholder="Email" />
+              <p> Password: </p> <input type="password" name="password" placeholder="Password" />
+              <input id="login_button" 
+                     className="btn btn-default center-block" 
+                     type="submit" 
+                     value="Login" />
+            </form>
+          </Panel>
+        </div>
+      </div>
     );
   }
 });

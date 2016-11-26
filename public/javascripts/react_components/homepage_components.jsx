@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import NavBar from "./common_components.jsx";
+import {NavBar, Panel} from "./common_components.jsx";
 
 /* Alot of the styling on this page was taken from provided examples from bootstrap website:
   http://getbootstrap.com/components/ */
@@ -59,21 +59,6 @@ var HomePage = React.createClass({
     );
   }
 });
-
-var Panel = React.createClass({
-  render: function() {
-    return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title">{this.props.title}</h3>
-        </div>
-        <div className="panel-body">
-          {this.props.children}
-        </div>
-      </div>
-    )
-  }
-})
 
 var SearchBar = React.createClass({
   render: function() {
