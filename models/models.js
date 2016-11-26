@@ -51,7 +51,10 @@ var Application = connection.define('applications', {
     },
     mentor_prefs: { 
         type: Sequelize.STRING 
-    }, 
+    },
+    year: {
+        type: Sequelize.INTEGER
+    } ,
     uID: {
         type: Sequelize.INTEGER,
         references: {

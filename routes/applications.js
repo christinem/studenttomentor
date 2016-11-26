@@ -4,35 +4,68 @@ var Models = require('../models/models.js');
 require('sequelize');
 
 
-app.get('/applications', function(req, res) {
-	if (req.query.id) {
-        return Models.Application.findById(req.query.id, { attributes: ['ID', 'stu_num', 'year'] })
-        .then(function(applications) {
-            res.json(applications);
-        })
-    }
+export.findApplications = function(req, res) {
+	if (req.query.length != 0) {
+		let queries = req.query;
+		return Models.Application.findAll({
+			where: queries,
+			attributes: ['id', 'year', 'uID']
+		});
+	}
+};
 
-    return Models.Application.findAll({ attributes: ['ID', 'stu_num',
-    	'grad_date', 'past_participation', 'interests', 'mentor_preferences',
-    	'purpose', 'year']
-    })
-        .then(function(applications) {
-            res.json(applications);
-        })
-});
-
-app.post('/applications', function(req, res) {
+export.addApplication = function(req, res) {
 	let newApplication = req.body;
-    Models.Application.create(newApplication).then(return "Successfully created application");
-});
 
-app.put('/applications', function(req, res) {
+	return Models.Application.create({
+		expected_grad: newApplication.expected_grad,
+        past_participation: newApplication.past_participation,
+        why_interested: newApplication.why_interested,
+        mentor_prefs: newApplication.mentor_prefs,
+        year: newApplication.year,
+        uID: newApplication.uID
+    }).then(function(result){
+	    if (result == 1) {
+	        res.send('Successfully added application.');
+	    } else {
+	         res.send('Mentor with that email already exists.');
+     	}
+	});
+};
 
-});
+export.updateApplication = function(req, res) {
+	let updatedApplication = req.body;
 
-app.delete('/applications', function(req, res) {
+	return Models.Application.update({
+        expected_grad: updatedApplication.expected_grad,
+        past_participation: updatedApplication.past_participation,
+        why_interested: updatedApplication.why_interested,
+        mentor_prefs: updatedApplication.mentor_prefs,
+        year: updatedApplication.year,
+        uID: updatedApplication.uID
+    }).then(function(result){
+        if (result == 1) {
+            res.send('Successfully updated application ' + req.query.id + '.')
+        } else {
+            res.send('Application with id ' + req.query.id + ' does not exist.')
+        }
+       
+    });
+};
 
-});
+export.deleteApplication = function(req, res) {
+	return Models.Application.destroy({
+        where: {
+            id: req.query.id
+        }
+    }).then(function(result){
+        if(result == 1) {
+            res.send('Successfully deleted application ' + req.query.id + '.')
+        } else {
+            res.send('Application with id ' + req.query.id + ' does not exist.')
+        } 
+    });         
+};
 
 
 module.exports = app;
