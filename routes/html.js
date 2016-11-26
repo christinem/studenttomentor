@@ -13,6 +13,10 @@ exports.homePage = function(req, res) {
     res.render('homepage', { title: 'Dashboard', user: req.user });
 };
 
+exports.profilePage = function(req, res) {
+    res.render('profile_page', { title: 'Dashboard', user: req.user });
+};
+
 // app.get('/', function(req, res) {
 //     res.render('login', {user: req.user});
 // })

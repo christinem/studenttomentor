@@ -49,7 +49,7 @@ var HomePage = React.createClass({
             <Panel title="Edit Profile" ref="panelBody">
               <div>
                 <p>Click here to edit your profile</p>
-                <button type="button" className="btn btn-default">Edit Profile</button>
+                <a href="/profile_page" className="btn btn-default" role="button">Edit Profile</a>
               </div>
             </Panel>
           </div>
