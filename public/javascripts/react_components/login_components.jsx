@@ -6,7 +6,7 @@ var LoginPage = React.createClass({
   render: function() {
     return(
       <div>
-        <NavBar loggedIn={false}/>
+        <NavBar />
 
         <div className="page-header">
           <h1 className="title"> Login: </h1>
@@ -19,7 +19,6 @@ var LoginPage = React.createClass({
 });
 
 var LoginForm = React.createClass({
-
   render: function() {
     return (
       <form id="login_form" className="container" action="/login" method="post">
