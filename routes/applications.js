@@ -28,7 +28,7 @@ export.addApplication = function(req, res) {
 	    if (result == 1) {
 	        res.send('Successfully added application.');
 	    } else {
-	         res.send('Mentor with that email already exists.');
+	         res.send('Error adding application.');
      	}
 	});
 };
