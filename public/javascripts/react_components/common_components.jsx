@@ -1,8 +1,29 @@
-import React from 'react';
+import React from "react";
 
 var NavBar = React.createClass({
+  getInitialState: function() {
+    return {
+      loggedIn: false
+    }
+  },
+
+  componentWillMount: function() {
+    var that = this;
+    $.getJSON("current_user", function(data) {
+        if (data.hasOwnProperty("email")) {
+            that.setState({loggedIn: true});
+        }
+    });
+  },
 
   render: function() {
+
+    if (this.state.loggedIn) {
+      var logoutButton = <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Log Out</a></li>;
+    } else {
+      var logoutButton = "";
+    }
+
     return (
       <div>
         {/* Nav bar styling adapted from http://www.w3schools.com/bootstrap/bootstrap_navbar.asp */} 
@@ -25,7 +46,7 @@ var NavBar = React.createClass({
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><a href="#"><span className="glyphicon glyphicon-user"></span> Profile Page</a></li>
-              <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+              {logoutButton}
             </ul>
           </div>
         </nav>

@@ -8,16 +8,28 @@ var LoginPage = React.createClass({
       <div>
         <NavBar loggedIn={false}/>
 
-        <h1 className="title"> Login: </h1>
-
-        <div id="login_form" className="container">
-          <form>
-            <p> Username: </p> <input type="text" name="username" />
-            <p> Password: </p> <input type="text" name="password" />
-            <input id="login_button" className="btn btn-default" type="submit" value="Login" />
-          </form> 
+        <div className="page-header">
+          <h1 className="title"> Login: </h1>
         </div>
+
+        <LoginForm />
       </div>
+    );
+  }
+});
+
+var LoginForm = React.createClass({
+
+  render: function() {
+    return (
+      <form id="login_form" className="container" action="/login" method="post">
+        <p> Email: </p> <input type="text" name="username" placeholder="Email" />
+        <p> Password: </p> <input type="password" name="password" placeholder="Password" />
+        <input id="login_button" 
+               className="btn btn-default" 
+               type="submit" 
+               value="Login" />
+      </form>
     );
   }
 });

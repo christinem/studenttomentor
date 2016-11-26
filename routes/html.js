@@ -9,6 +9,10 @@ exports.loginPage = function(req, res) {
     res.render('login', {user: req.user});
 };
 
+exports.homePage = function(req, res) {
+    res.render('homepage', { title: 'Dashboard', user: req.user });
+};
+
 // app.get('/', function(req, res) {
 //     res.render('login', {user: req.user});
 // })
@@ -18,14 +22,6 @@ exports.loginPage = function(req, res) {
 //                                      failureRedirect: '/login'}));
 
 // app.get('/admin_dashboard', )
-
-// app.get('/homepage', auth, function(req, res) {
-//     res.render('homepage', { title: 'Homepage!', user: req.user });
-// });
-
-// app.get('/documentview', auth, function(req, res) {
-//     res.render('document_view', { title: 'Document View', user: req.user });
-// });
 
 // app.get('/logout', function(req, res) {
 //     req.logout();

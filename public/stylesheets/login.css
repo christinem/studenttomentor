@@ -1,12 +1,4 @@
-html {
-  position: relative;
-}
-
-
-
- /* ------- Login Page Styles ---------- */
-
- #login_form {
+#login_form {
     position: fixed;
     margin-top: -100px;
     margin-left: -200px;
@@ -18,8 +10,8 @@ html {
     left: 50%;
     overflow: auto;
     text-align: center;
- }
+}
 
- #login_button {
+#login_button {
   display: block;
- }
+}
