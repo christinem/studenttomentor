@@ -74,4 +74,4 @@ app.get('/user_info', function(req, res) {
     res.json(req.user);
 });
 
-module.exports = app;
+// module.exports = app;
