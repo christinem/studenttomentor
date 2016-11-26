@@ -2,6 +2,6 @@
 
 # How to Run
 
-Run `./node_modules/.bin/webpack -d --watch`.
+Run `./node_modules/.bin/webpack -d` to create the React bundle files.
 
-Run `node server`.
+Run `node server` to start the web server.
