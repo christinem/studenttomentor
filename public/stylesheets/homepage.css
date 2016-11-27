@@ -1,7 +1,5 @@
-#document {
-	width: 100px;
-	height: 100px; 
+#applications {
 	border: 1px solid black;
-	text-align: center;
-	cursor: pointer;
-};
+	width: 100px;
+	height: 100px;
+}

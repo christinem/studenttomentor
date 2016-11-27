@@ -23,7 +23,7 @@ exports.findUsers = function(req, res) {
         attributes: ['id', 'first_name', 'last_name', 'email'] 
     }).then(function(admins) {
         res.json(admins);
-    })
+    });
 };
 
 // ----- Admins ------ //

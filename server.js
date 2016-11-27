@@ -7,6 +7,9 @@ var session = require('express-session');
 var connection = require('./models/sequelize.js');
 
 var user_routes = require('./routes/users');
+var html_routes = require('./routes/html');
+
+require('./models/userlogin.js')();
 
 var app = express();
 
@@ -27,13 +30,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//     var err = new Error('Not Found');
-//     err.status = 404;
-//     next(err);
-// });
+app.get('/current_user', function(req, res) {
+  if (req.user === undefined) {
+    // The user is not logged in
+    res.json({});
+  } else {
+    res.json(req.user);
+  }
+});
 
+// ---------- Routes for Users ---------- //
 app.get('/users', user_routes.findUsers);
 
 app.get('/users/admins', user_routes.findAdmins);
@@ -50,6 +56,30 @@ app.get('/users/students', user_routes.findStudents);
 app.post('/users/students', user_routes.addStudent);
 app.put('/users/students', user_routes.updateStudent);
 app.delete('/users/students', user_routes.deleteStudent);
+
+// --------- HTML Routes ------------ //
+var auth = function(req, res, next) { 
+  if (!req.isAuthenticated()) 
+    res.redirect('/login'); 
+  else next(); 
+}; 
+
+app.get('/', html_routes.loginPage);
+app.get('/login', html_routes.loginPage);
+app.get('/homepage', auth, html_routes.homePage);
+// app.get('/student_dashboard', auth, html_routes.studentDashboard);
+// app.get('/mentor_dashboard', auth, html_routes.adminDashboard);
+app.get('/profile_page', auth, html_routes.profilePage);
+// app.get('/register', html_routes.registerPage);
+
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/homepage',
+                                   failureRedirect: '/login'}));
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/login');
+});
 
 app.listen(3000);
 console.log('Listening on port 3000');
