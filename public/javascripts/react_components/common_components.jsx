@@ -79,7 +79,7 @@ export var Panel = React.createClass({
         <div className="panel-heading">
           <h3 className="panel-title">{this.props.title}</h3>
         </div>
-        <div className="panel-body">
+        <div id={this.props.id} className="panel-body">
           {this.props.children}
         </div>
       </div>
