@@ -60,9 +60,9 @@ app.put('/users/students', user_routes.updateStudent);
 app.delete('/users/students', user_routes.deleteStudent);
 
 // ---------- Routes for Interests ---------- //
-// app.get('/interests', interest_routes.findInterests);
-// app.post('/interests', interest_routes.addInterest);
-// app.delete('/interests', interest_routes.deleteInterest);
+app.get('/interests', interest_routes.findInterests);
+app.post('/interests', interest_routes.addInterest);
+app.delete('/interests', interest_routes.deleteInterest);
 
 // ---------- Routes for Applications ---------- //
 app.get('/applications', application_routes.findApplications);
