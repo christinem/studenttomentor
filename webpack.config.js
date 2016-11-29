@@ -13,7 +13,8 @@ var config = {
     homepage_components: APP_DIR + '/homepage_components.jsx', 
     profile_page_components: APP_DIR + '/profile_page_components.jsx',
     edit_profile_page_components: APP_DIR + '/edit_profile_page_components.jsx',
-    application_page_components: APP_DIR + '/application_page_components.jsx'},
+    application_page_components: APP_DIR + '/application_page_components.jsx',
+    view_application_components: APP_DIR + '/view_application_components.jsx'},
   output: {
     path: BUILD_DIR,
     filename: '[name].js'

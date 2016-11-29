@@ -24,7 +24,19 @@ exports.editProfilePage = function(req, res) {
 };
 
 exports.applicationPage = function(req, res) {
-    res.render('application_page', { title: 'Dashboard', user: req.user });
+	Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('application_page', { title: 'New Application', user: JSON.stringify(user) });
+    }); 
+};
+
+exports.viewApplicationPage = function(req, res) {
+    Models.User.findById(req.params.user_id).then(function(user) {
+        Models.Application.findById(req.params.application_id).then(function(application) {
+            res.render('view_application_page', { title: 'New Application', 
+                                             user: JSON.stringify(user),
+                                             application: JSON.stringify(application) });
+        })        
+    }); 
 };
 
 // app.get('/', function(req, res) {
