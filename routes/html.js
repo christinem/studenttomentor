@@ -1,9 +1,5 @@
-var auth = function(req, res, next) { 
-    if (!req.isAuthenticated()) 
-        res.redirect('/login'); 
-    else next(); 
-}; 
-
+var Models = require('../models/models.js');
+require('sequelize');
 
 exports.loginPage = function(req, res) {
     res.render('login', {user: req.user});
@@ -14,7 +10,9 @@ exports.homePage = function(req, res) {
 };
 
 exports.profilePage = function(req, res) {
-    res.render('profile_page', { title: 'Dashboard', user: req.user });
+	Models.User.findById(req.query.id).then(function(user) {
+        res.render('profile_page', { title: 'Profile Page', user: JSON.stringify(user) });
+    }); 
 };
 
 // app.get('/', function(req, res) {

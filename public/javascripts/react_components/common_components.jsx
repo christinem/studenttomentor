@@ -3,21 +3,21 @@ import React from "react";
 export var NavBar = React.createClass({
   getInitialState: function() {
     return {
-      loggedIn: false
+      user: null
     }
   },
 
   componentWillMount: function() {
     var that = this;
-    $.getJSON("current_user", function(data) {
-        if (data.hasOwnProperty("email")) {
-            that.setState({loggedIn: true});
+    $.getJSON("current_user", function(user) {
+        if (user.hasOwnProperty("email")) {
+            that.setState({user: user});
         }
     });
   },
 
   renderLeftColumn: function() {
-    if (this.state.loggedIn) {
+    if (this.state.user) {
       return (
         <ul className="nav navbar-nav">
           <li><a href="/homepage">Home</a></li>
@@ -38,10 +38,10 @@ export var NavBar = React.createClass({
   },
 
   renderRightColumn: function() {
-    if (this.state.loggedIn) {
+    if (this.state.user) {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><a href="/profile_page">
+          <li><a href={"/profile_page?id=" + this.state.user.id}>
             <span className="glyphicon glyphicon-user"></span> Profile Page
           </a></li>
           <li><a href="/logout">
