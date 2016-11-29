@@ -48,7 +48,7 @@ var HomePage = React.createClass({
             <Panel title="New Application">
               <div>
                 <p>Click here to create a new application</p>
-                <button type="button" className="btn btn-default">New Application</button>
+               <a href={"/application_page/" + user.id} className="btn btn-default" role="button">New Application</a>
               </div>
             </Panel>
           </div>

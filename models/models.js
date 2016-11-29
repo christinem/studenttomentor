@@ -81,8 +81,24 @@ connection.sync({force: true})
           student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
           type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']});
 
+        User.create({first_name: "Eugene", last_name: "Cheung", gender: "Male", 
+          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "s", email: "eugene@hello.com", password: 'hello', interests: ['AI', 'HCI']});
+
+        User.create({first_name: "Blaze", last_name: "Calaycay", gender: "Male", 
+          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "s", email: "blaze@hello.com", password: 'hello', interests: ['AI', 'HCI']});
+
         User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
           email: "goodbye@goodbye.com", password: 'goodbye'});
+
+        User.create({first_name: "Karen", last_name: "Reid", gender: "Female", 
+          birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "m", email: "karen@cookies.com", password: 'cookies'});
+
+        User.create({first_name: "Shen", last_name: "Ta", gender: "Male", 
+          birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "m", email: "shen@cookies.com", password: 'cookies'});
 
         User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
           birthday: "September 6, 2016", about_text: "Hello",
@@ -93,9 +109,6 @@ connection.sync({force: true})
 
         Application.create({expected_grad: "2017", past_participation: true, 
             why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 1});
-
-        Application.create({expected_grad: "2017", past_participation: true, 
-            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 2});
 
         Interest.create({interest_string: "AI"});
 

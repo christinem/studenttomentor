@@ -24,8 +24,7 @@ export var NavBar = React.createClass({
             <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
             <span className="caret"></span></a>
             <ul className="dropdown-menu">
-              <li><a href="/application_page">View Current Applications</a></li>
-              <li><a href="/application_page">Create a New Application</a></li>
+              <li><a href={"/application_page/" + this.state.user.id}>Create a New Application</a></li>
             </ul>
           </li>
           <li><a href="#">Advanced Search</a></li> 
