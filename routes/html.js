@@ -1,20 +1,26 @@
-var auth = function(req, res, next) { 
-    if (!req.isAuthenticated()) 
-        res.redirect('/login'); 
-    else next(); 
-}; 
-
+var Models = require('../models/models.js');
+require('sequelize');
 
 exports.loginPage = function(req, res) {
-    res.render('login', {user: req.user});
+    res.render('login');
 };
 
 exports.homePage = function(req, res) {
-    res.render('homepage', { title: 'Dashboard', user: req.user });
+	Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('homepage', { title: 'Dashboard', user: JSON.stringify(user) });
+    }); 
 };
 
 exports.profilePage = function(req, res) {
-    res.render('profile_page', { title: 'Dashboard', user: req.user });
+	Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('profile_page', { title: 'Profile Page', user: JSON.stringify(user) });
+    }); 
+};
+
+exports.editProfilePage = function(req, res) {
+	Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('edit_profile_page', { title: 'Profile Page', user: JSON.stringify(user) });
+    }); 
 };
 
 // app.get('/', function(req, res) {
