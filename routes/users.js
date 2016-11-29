@@ -87,10 +87,8 @@ exports.updateAdmin = function(req, res) {
             } else {
                 res.send('Admin with id ' + req.query.id + ' does not exist.')
             }
-           
-        })
-    }
-
+        });
+};
 
 exports.deleteAdmin = function(req, res) {
     return Models.User.destroy({
@@ -102,28 +100,27 @@ exports.deleteAdmin = function(req, res) {
                 res.send('Successfully deleted admin user ' + req.query.id + '.')
             } else {
                 res.send('Admin with id ' + req.query.id + ' does not exist.')
-            }
-           
-        })
-    };
+            } 
+        });
+};
 
-// ----- Mentor ------ //
+// ----- Mentors ------ //
 
 exports.findMentors = function(req, res) {
     if (req.query.length != 0) {
-        let queries = req.query
+        let queries = req.query;
 
         let interests_query;
-        if (req.query.interests){
-            interests_query = req.query.interests.split(',')
-            queries['interests'] = {$contains: interests_query}
+        if (req.query.interests) {
+            interests_query = req.query.interests.split(',');
+            queries['interests'] = {$contains: interests_query};
         }
 
         queries["type_of_user"] = "m";
         return Models.User.findAll({
             where: queries,
             attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text']
-        }).then(function(mentors) {
+        }).then(function(mentors){
             res.json(mentors);
         });
     }
@@ -131,7 +128,7 @@ exports.findMentors = function(req, res) {
     return Models.User.findAll({
         where: {type_of_user: "m"},
         attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text'] 
-    }).then(function(mentors) {
+    }).then(function(mentors){
         res.json(mentors);
     });
 };
@@ -179,40 +176,37 @@ exports.updateMentor = function(req, res) {
             }
         }).then(function(result){
             if(result == 1) {
-                res.send('Successfully updated mentor user ' + req.query.id + '.')
+                res.send('Successfully updated mentor user ' + req.query.id + '.');
             } else {
-                res.send('Mentor with id ' + req.query.id + ' does not exist.')
-            }
-           
-        })
+                res.send('Mentor with id ' + req.query.id + ' does not exist.');
+            }  
+        });
 };
 
 exports.deleteMentor = function(req, res) {
-     return Models.User.destroy({
+    return Models.User.destroy({
         where: {
             id: req.query.id,
             type_of_user: 'm'
         }}).then(function(result){
              if(result == 1) {
-                res.send('Successfully deleted mentor user ' + req.query.id + '.')
+                res.send('Successfully deleted mentor user ' + req.query.id + '.');
             } else {
-                res.send('Mentor with id ' + req.query.id + ' does not exist.')
+                res.send('Mentor with id ' + req.query.id + ' does not exist.');
             }
-           
-        })
-
+        });
 };
 
 // ----- Students ------ //
 
 exports.findStudents = function(req, res) {
-        let queries = req.query
+    let queries = req.query;
 
-        let interests_query;
-        if (req.query.interests){
-            interests_query = req.query.interests.split(',')
-            queries['interests'] = {$contains: interests_query}
-        }
+    let interests_query;
+    if (req.query.interests) {
+        interests_query = req.query.interests.split(',');
+        queries['interests'] = {$contains: interests_query};
+    }
 
     if (req.query.length != 0) {
         queries["type_of_user"] = "s";
@@ -255,13 +249,13 @@ exports.addStudent = function(req, res) {
         if (created) {
             res.send('Successfully added student.');
         } else {
-             res.send('Student with that email already exists.');
+            res.send('Student with that email already exists.');
         }
     });
 };
 
 exports.updateStudent = function(req, res) {
-     return Models.User.update({
+    return Models.User.update({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
@@ -275,14 +269,12 @@ exports.updateStudent = function(req, res) {
                 type_of_user: "s"
             }
         }).then(function(result){
-            if(result == 1) {
-                res.send('Successfully updated student user ' + req.query.id + '.')
+            if (result == 1) {
+                res.send('Successfully updated student user ' + req.query.id + '.');
             } else {
-                res.send('Student with id ' + req.query.id + ' does not exist.')
+                res.send('Student with id ' + req.query.id + ' does not exist.');
             }
-           
-        })
-
+        });
 };
 
 exports.deleteStudent = function(req, res) {
@@ -291,14 +283,12 @@ exports.deleteStudent = function(req, res) {
             id: req.query.id,
             type_of_user: 's'
         }}).then(function(result){
-             if(result == 1) {
+            if(result == 1) {
                 res.send('Successfully deleted student user ' + req.query.id + '.')
             } else {
                 res.send('Student with id ' + req.query.id + ' does not exist.')
             }
-           
-        })
-
+        });
 };
 
 // ----------------------------------------------------------

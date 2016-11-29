@@ -17,6 +17,10 @@ exports.profilePage = function(req, res) {
     res.render('profile_page', { title: 'Dashboard', user: req.user });
 };
 
+exports.applicationPage = function(req, res) {
+    res.render('application_page', { title: 'Dashboard', user: req.user });
+};
+
 // app.get('/', function(req, res) {
 //     res.render('login', {user: req.user});
 // })

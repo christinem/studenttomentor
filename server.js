@@ -83,6 +83,7 @@ app.get('/homepage', auth, html_routes.homePage);
 // app.get('/student_dashboard', auth, html_routes.studentDashboard);
 // app.get('/mentor_dashboard', auth, html_routes.adminDashboard);
 app.get('/profile_page', auth, html_routes.profilePage);
+app.get('/application_page', auth, html_routes.applicationPage);
 // app.get('/register', html_routes.registerPage);
 
 app.post('/login',
