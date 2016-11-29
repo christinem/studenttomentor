@@ -20,7 +20,7 @@ export var NavBar = React.createClass({
     if (this.state.user) {
       return (
         <ul className="nav navbar-nav">
-          <li><a href="/homepage">Home</a></li>
+          <li><a href={"/homepage?id=" + this.state.user.id}>Home</a></li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
             <span className="caret"></span></a>

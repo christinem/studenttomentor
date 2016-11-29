@@ -85,9 +85,14 @@ app.get('/homepage', auth, html_routes.homePage);
 app.get('/profile_page', auth, html_routes.profilePage);
 // app.get('/register', html_routes.registerPage);
 
+// app.post('/login',
+//   passport.authenticate('local', { successRedirect: '/homepage',
+//                                    failureRedirect: '/login'}));
+
 app.post('/login',
-  passport.authenticate('local', { successRedirect: '/homepage',
-                                   failureRedirect: '/login'}));
+  passport.authenticate('local'), function(req, res) {
+      res.redirect('/homepage?id=' + req.user.id);
+  });
 
 app.get('/logout', function(req, res) {
   req.logout();

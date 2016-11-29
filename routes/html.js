@@ -6,7 +6,9 @@ exports.loginPage = function(req, res) {
 };
 
 exports.homePage = function(req, res) {
-    res.render('homepage', { title: 'Dashboard', user: req.user });
+	Models.User.findById(req.query.id).then(function(user) {
+        res.render('homepage', { title: 'Dashboard', user: JSON.stringify(user) });
+    }); 
 };
 
 exports.profilePage = function(req, res) {
