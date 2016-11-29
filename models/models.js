@@ -22,10 +22,15 @@ var User = connection.define('users', {
       allowNull: true, 
       defaultValue: null, 
     },
+    interests: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: true,
+        defaultValue: null,
+    },
     student_number: { 
       type: Sequelize.INTEGER,
       allowNull: true, 
-      defaultValue: null,  
+      defaultValue: null,
     },
     birthday: { 
       type: Sequelize.STRING,
@@ -66,14 +71,7 @@ var Application = connection.define('applications', {
 
 var Interest = connection.define('interests', {
     interest_string: {
-        type: Sequelize.STRING 
-    },
-    uID: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: 'users', 
-            key: 'id'
-        }
+        type: Sequelize.STRING
     }
 });
 
@@ -93,10 +91,11 @@ connection.sync({force: true})
         Application.create({expected_grad: "2016", past_participation: false, 
             why_interested: "It's awesome", mentor_prefs: "None", year: 2015, uID: 1});
 
-        Interest.create({interest_string: "AI", uID: 1});
+        Interest.create({interest_string: "AI"});
 
-        Interest.create({interest_string: "HCI", uID: 1});
+        Interest.create({interest_string: "HCI"});
     });
 
 module.exports.User = User;
 module.exports.Application = Application;
+module.exports.Interest = Interest;
