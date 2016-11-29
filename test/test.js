@@ -37,7 +37,6 @@ describe('Users', () => {
             	if (err) {
             		console.log("Error: ", err)
             	}
-                // console.log(res)
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
                 res.body.length.should.be.eql(7);
@@ -112,6 +111,59 @@ describe('Users', () => {
   });
 
   /*
+  * Test the /PUT route for students
+  */
+  describe('/PUT students', () => {
+      it('it should PUT a student', (done) => {
+        chai.request('http://localhost:3000')
+            .put('users/students/1');
+            .send({first_name: "Christine", last_name: "Murad", gender: "Female", 
+          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hi There!!",
+          type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']})
+            .set('Accept', 'application/json')
+            .end(function (err, res){
+              if (err) {
+                console.log("Error: ", err)
+              }
+                expect(res).to.have.status(200);
+                res.body.should.be.a('string');
+                res.body.should.equal('Successfully updated student user 1.')
+                done();
+            });
+      });
+  });
+
+  /*
+  * Test the /POST route for students
+  */
+  describe('/POST students', () => {
+      it('it should POST a student', (done) => {
+        chai.request('http://localhost:3000')
+            .post('users/students');
+            .field('first_name': 'New')
+            .field('last_name': 'Student')
+            .field('gender': 'Female')
+            .field('student_number': 998755761)
+            .field('birthday': 'September 6, 2016')
+            .field('about_text': 'Hi There!!')
+            .field('type_of_user': 's')
+            .field('email': 'new@hello.com')
+            .field('password': 'newhello')
+            .field('interests': '[AI, HCI]')
+            .set('Accept', 'application/json')
+            .end(function (err, res){
+              if (err) {
+                console.log("Error: ", err)
+              }
+                expect(res).to.have.status(200);
+                res.body.should.be.a('string');
+                res.body.should.equal('Successfully updated student user 1.')
+                done();
+            });
+      });
+  });
+
+  /*
   * Test the /GET route for applications
   */
   describe('/GET applications', () => {
@@ -146,6 +198,27 @@ describe('Users', () => {
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
                 res.body.length.should.be.eql(2);
+                done();
+            });
+      });
+  });
+
+  /*
+  * Test the /POST route for interests
+  */
+  describe('/POST interests', () => {
+      it('it should POST the interest', (done) => {
+        chai.request('http://localhost:3000')
+            .post('/interests')
+            .field('interest_string', 'New Interest')
+            .set('Accept', 'application/json')
+            .end(function (err, res){
+              if (err) {
+                console.log("Error: ", err)
+              }
+                expect(res).to.have.status(200);
+                res.body.should.be.a('string');
+                res.body.should.equal('Successfully added new interest.')
                 done();
             });
       });
