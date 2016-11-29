@@ -9,18 +9,17 @@ export var NavBar = React.createClass({
 
   componentWillMount: function() {
     var that = this;
-    $.getJSON("current_user", function(user) {
-        if (user.hasOwnProperty("email")) {
-            that.setState({user: user});
-        }
-    });
+
+    if (typeof user !== "undefined") {
+      this.setState({user: user});
+    }
   },
 
   renderLeftColumn: function() {
     if (this.state.user) {
       return (
         <ul className="nav navbar-nav">
-          <li><a href={"/homepage?id=" + this.state.user.id}>Home</a></li>
+          <li><a href={"/homepage/" + this.state.user.id}>Home</a></li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
             <span className="caret"></span></a>
@@ -41,7 +40,7 @@ export var NavBar = React.createClass({
     if (this.state.user) {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><a href={"/profile_page?id=" + this.state.user.id}>
+          <li><a href={"/profile_page/" + this.state.user.id}>
             <span className="glyphicon glyphicon-user"></span> Profile Page
           </a></li>
           <li><a href="/logout">

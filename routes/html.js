@@ -2,17 +2,17 @@ var Models = require('../models/models.js');
 require('sequelize');
 
 exports.loginPage = function(req, res) {
-    res.render('login', {user: req.user});
+    res.render('login');
 };
 
 exports.homePage = function(req, res) {
-	Models.User.findById(req.query.id).then(function(user) {
+	Models.User.findById(req.params.user_id).then(function(user) {
         res.render('homepage', { title: 'Dashboard', user: JSON.stringify(user) });
     }); 
 };
 
 exports.profilePage = function(req, res) {
-	Models.User.findById(req.query.id).then(function(user) {
+	Models.User.findById(req.params.user_id).then(function(user) {
         res.render('profile_page', { title: 'Profile Page', user: JSON.stringify(user) });
     }); 
 };

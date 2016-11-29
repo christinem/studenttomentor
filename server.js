@@ -79,10 +79,10 @@ var auth = function(req, res, next) {
 
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
-app.get('/homepage', auth, html_routes.homePage);
+app.get('/homepage/:user_id', auth, html_routes.homePage);
 // app.get('/student_dashboard', auth, html_routes.studentDashboard);
 // app.get('/mentor_dashboard', auth, html_routes.adminDashboard);
-app.get('/profile_page', auth, html_routes.profilePage);
+app.get('/profile_page/:user_id', auth, html_routes.profilePage);
 // app.get('/register', html_routes.registerPage);
 
 // app.post('/login',
@@ -91,7 +91,7 @@ app.get('/profile_page', auth, html_routes.profilePage);
 
 app.post('/login',
   passport.authenticate('local'), function(req, res) {
-      res.redirect('/homepage?id=' + req.user.id);
+      res.redirect('/homepage/' + req.user.id);
   });
 
 app.get('/logout', function(req, res) {
