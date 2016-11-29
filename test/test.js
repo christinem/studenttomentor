@@ -5,7 +5,7 @@ let chaiHttp = require('chai-http');
 let should = chai.should();
 let expect = chai.expect;
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize("postgres://localhost:5432/studenttomentor", {logging: false});
+var sequelize = new Sequelize("postgres://localhost:5432/teststudenttomentor", {logging: false});
 
 require('sequelize');
 var Models = require('../models/models.js');
@@ -15,15 +15,46 @@ chai.use(chaiHttp);
 
 //Our parent block
 describe('Users', () => {
-    beforeEach((done) => { //Before each test we empty the database
-        sequelize.sync({ force: true}).then(function () { done(); }, function(err){done(err);});
+    before((done) => { //Before running tests we populate the test database
+        // sequelize.sync({ force: true}).then(function () { done(); }, function(err){done(err);});
+
+        User.create({first_name: "Christine", last_name: "Murad", gender: "Female", 
+          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']});
+
+        User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
+          email: "goodbye@goodbye.com", password: 'goodbye'});
+
+        User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
+          birthday: "September 6, 2016", about_text: "Hello",
+          type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
+
+        Application.create({expected_grad: "2016", past_participation: false, 
+            why_interested: "It's awesome", mentor_prefs: "None", year: 2015, uID: 1});
+
+        Application.create({expected_grad: "2017", past_participation: true, 
+            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 1});
+
+        Application.create({expected_grad: "2017", past_participation: true, 
+            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 2});
+
+        Interest.create({interest_string: "AI"});
+
+        Interest.create({interest_string: "HCI"});
     });
 
-      // beforeEach((done) => { //Before each test we empty the database
-     //    Models.User.destroy({truncate: true}, (err) => {
-     //       done();        
-     //    });
-
+    after(function() {
+      //After the tests, empty the test database so it will be squeaky clean next time
+      Models.User.destroy({truncate: true}, (err) => {
+        done();        
+      });
+      Models.Application.destroy({truncate: true}, (err) => {
+        done();        
+      });
+      Models.Interest.destroy({truncate: true}, (err) => {
+        done();        
+      });
+    });
 
   /*
   * Test the /GET route for users
@@ -117,9 +148,7 @@ describe('Users', () => {
       it('it should PUT a student', (done) => {
         chai.request('http://localhost:3000')
             .put('users/students/1');
-            .send({first_name: "Christine", last_name: "Murad", gender: "Female", 
-          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hi There!!",
-          type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']})
+            .send({first_name: "Christine", last_name: "Murad", gender: "Female", student_number: 123456789, birthday: "September 6, 2016", about_text: "Hi There!!", type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: '[AI, HCI]'})
             .set('Accept', 'application/json')
             .end(function (err, res){
               if (err) {
