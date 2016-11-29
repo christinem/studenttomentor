@@ -39,7 +39,8 @@ var HomePage = React.createClass({
                   <p>Click on existing applications to view their status:</p>
                   <ul className="list-group">
                     {applications.map(function(application) {
-                      return (<a href={"/applications/" + application.id} className="list-group-item"> {"Application " + application.id}</a>);
+                      return (<a href={"/user/" + user.id + "/view_application_page/" + application.id} 
+                        className="list-group-item"> {"Application " + application.id}</a>);
                     })}
                   </ul>
                 </div>
@@ -48,7 +49,7 @@ var HomePage = React.createClass({
             <Panel title="New Application">
               <div>
                 <p>Click here to create a new application</p>
-                <button type="button" className="btn btn-default">New Application</button>
+               <a href="/application_page" className="btn btn-default" role="button">New Application</a>
               </div>
             </Panel>
           </div>
