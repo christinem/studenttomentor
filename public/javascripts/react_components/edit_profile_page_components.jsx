@@ -7,17 +7,20 @@ var ProfilePage = React.createClass({
     if (type == "m") {
       return (
          <div className="list-group-item"> 
-          <b>Gender:</b> {user.gender} 
+          <b>Gender:</b> 
+          <input type="text" id="gender" className="form-control" placeholder={user.gender} /> 
         </div> 
       );
     } else if (type == "s") {
       return(
         <div>
           <div className="list-group-item"> 
-            <b>Gender:</b> {user.gender} 
+            <b>Gender:</b> 
+            <input type="text" id="gender" className="form-control" placeholder={user.gender} /> 
           </div> 
           <div className="list-group-item"> 
-            <b>Student Number:</b> {user.student_number} 
+            <b>Student Number:</b>
+            <input type="text" id="student_number" className="form-control" placeholder={user.student_number} /> 
           </div> 
         </div>
       );
@@ -49,13 +52,16 @@ var ProfilePage = React.createClass({
                 <Panel id="personal_info" title="Personal Information">
                   <ul className="list-group"> 
                     <div className="list-group-item"> 
-                      <b>First Name:</b> {user.first_name}
+                      <b>First Name:</b>  
+                      <input type="text" id="first_name" className="form-control" placeholder={user.first_name} /> 
                     </div>
                     <div className="list-group-item">
-                      <b>Last Name:</b> {user.last_name} 
+                      <b>Last Name:</b> 
+                      <input type="text" id="last_name" className="form-control" placeholder={user.last_name} /> 
                     </div> 
                     <div className="list-group-item"> 
-                      <b>Email:</b> {user.email} 
+                      <b>Email:</b> 
+                      <input type="text" id="email" className="form-control" placeholder={user.email} /> 
                     </div> 
                     {this.renderExtraPersonalInformation(user.type_of_user)}
                   </ul>
@@ -77,9 +83,16 @@ var ProfilePage = React.createClass({
             <div className="row">
               <div className="col-md-12 text-center">
                 <Panel id="about_me" title="About Me"> 
-                  {user.about_text} 
+                  <input type="text" id="about_text" className="form-control" placeholder={user.about_text} /> 
                 </Panel>
               </div>
+            </div>
+
+            <div className="row">
+              <input id="login_button" 
+                       className="btn btn-default center-block" 
+                       type="submit" 
+                       value="Save" />
             </div>
           </Panel>
           

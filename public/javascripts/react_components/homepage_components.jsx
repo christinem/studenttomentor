@@ -62,7 +62,7 @@ var HomePage = React.createClass({
             <Panel title="Edit Profile">
               <div>
                 <p>Click here to edit your profile</p>
-                <a href="#" className="btn btn-default" role="button">Edit Profile</a>
+                <a href={"/edit_profile_page/" + user.id} className="btn btn-default" role="button">Edit Profile</a>
               </div>
             </Panel>
           </div>
@@ -122,7 +122,7 @@ var HomePage = React.createClass({
               <Panel title="Edit Profile">
                 <div>
                   <p>Click here to edit your profile</p>
-                  <a href="#" className="btn btn-default" role="button">Edit Profile</a>
+                  <a href={"/edit_profile_page/" + user.id} className="btn btn-default" role="button">Edit Profile</a>
                 </div>
               </Panel>
             </div>

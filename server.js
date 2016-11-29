@@ -22,8 +22,6 @@ app.use(express.static(__dirname + '/'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cookieParser());
 app.use(session({secret: 'anything', resave: false, saveUninitialized: false}));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -80,8 +78,7 @@ var auth = function(req, res, next) {
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
 app.get('/homepage/:user_id', auth, html_routes.homePage);
-// app.get('/student_dashboard', auth, html_routes.studentDashboard);
-// app.get('/mentor_dashboard', auth, html_routes.adminDashboard);
+app.get('/edit_profile_page/:user_id', auth, html_routes.editProfilePage);
 app.get('/profile_page/:user_id', auth, html_routes.profilePage);
 // app.get('/register', html_routes.registerPage);
 
