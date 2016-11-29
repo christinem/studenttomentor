@@ -40,7 +40,7 @@ describe('Users', () => {
                 // console.log(res)
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
-                res.body.length.should.be.eql(3);
+                res.body.length.should.be.eql(7);
               	done();
 
             });
@@ -82,7 +82,7 @@ describe('Users', () => {
               }
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
-                res.body.length.should.be.eql(1);
+                res.body.length.should.be.eql(3);
                 done();
 
             });
@@ -104,7 +104,7 @@ describe('Users', () => {
                 console.log(res);
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
-                res.body.length.should.be.eql(1);
+                res.body.length.should.be.eql(3);
                 done();
 
             });
@@ -125,7 +125,7 @@ describe('Users', () => {
               }
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
-                res.body.length.should.be.eql(1);
+                res.body.length.should.be.eql(2);
                 done();
             });
       });
