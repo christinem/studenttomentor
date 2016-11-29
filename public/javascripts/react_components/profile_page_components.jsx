@@ -3,8 +3,33 @@ import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
 
 var ProfilePage = React.createClass({
+  renderExtraPersonalInformation: function(type) {
+    if (type == "m") {
+      return (
+         <div className="list-group-item"> 
+          <b>Gender:</b> {user.gender} 
+        </div> 
+      );
+    } else if (type == "s") {
+      return(
+        <div>
+          <div className="list-group-item"> 
+            <b>Gender:</b> {user.gender} 
+          </div> 
+          <div className="list-group-item"> 
+            <b>Student Number:</b> {user.student_number} 
+          </div> 
+        </div>
+      );
+    }
+  },
 
   render: function() {
+    var interests = [];
+    if (user.interests) {
+      interests = user.interests;
+    }
+
     return(
       <div>
         <NavBar />
@@ -31,17 +56,15 @@ var ProfilePage = React.createClass({
                       <b>Last Name:</b> {user.last_name} 
                     </div> 
                     <div className="list-group-item"> 
-                      <b>Gender:</b> {user.gender} 
-                    </div> 
-                    <div className="list-group-item"> 
                       <b>Email:</b> {user.email} 
                     </div> 
+                    {this.renderExtraPersonalInformation(user.type_of_user)}
                   </ul>
                 </Panel> 
               </div>
               <div className="col-md-6 text-center">
                 <Panel id="interests" title="Interests"> 
-                  {user.interests.map(function(interest) {
+                  {interests.map(function(interest) {
                     return(
                       <div className="list-group-item"> 
                         {interest} 
