@@ -23,6 +23,10 @@ exports.editProfilePage = function(req, res) {
     }); 
 };
 
+exports.applicationPage = function(req, res) {
+    res.render('application_page', { title: 'Dashboard', user: req.user });
+};
+
 // app.get('/', function(req, res) {
 //     res.render('login', {user: req.user});
 // })

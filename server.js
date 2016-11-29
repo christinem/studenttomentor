@@ -77,9 +77,12 @@ var auth = function(req, res, next) {
 
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
+
 app.get('/homepage/:user_id', auth, html_routes.homePage);
 app.get('/edit_profile_page/:user_id', auth, html_routes.editProfilePage);
 app.get('/profile_page/:user_id', auth, html_routes.profilePage);
+app.get('/application_page', auth, html_routes.applicationPage);
+
 // app.get('/register', html_routes.registerPage);
 
 // app.post('/login',
