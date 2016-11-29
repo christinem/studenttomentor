@@ -91,6 +91,12 @@ connection.sync({force: true})
         Application.create({expected_grad: "2016", past_participation: false, 
             why_interested: "It's awesome", mentor_prefs: "None", year: 2015, uID: 1});
 
+        Application.create({expected_grad: "2017", past_participation: true, 
+            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 1});
+
+        Application.create({expected_grad: "2017", past_participation: true, 
+            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 2});
+
         Interest.create({interest_string: "AI"});
 
         Interest.create({interest_string: "HCI"});

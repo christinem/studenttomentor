@@ -6,11 +6,25 @@ import {NavBar, Panel} from "./common_components.jsx";
   http://getbootstrap.com/components/ */
 
 var HomePage = React.createClass({
-  getApplications: function() {
+  getInitialState: function() {
+    return {
+      applications: []
+    }
+  },
 
+  componentDidMount: function() {
+    var that = this;
+    $.getJSON("/applications?uID=" + user.id, function(applications) {
+      that.setState({applications: applications});
+    });
   },
 
   render: function() {
+
+    if(this.state.applications) {
+       var applications = this.state.applications
+    }
+
     return(
       <div>
         <NavBar />
@@ -20,9 +34,9 @@ var HomePage = React.createClass({
                 <div>
                   <p>Click on existing applications to view their status:</p>
                   <ul className="list-group">
-                    <a href='#' className="list-group-item">Cras justo odio</a>
-                    <a href='#' className="list-group-item">Cras justo odio</a>
-                    <a href='#' className="list-group-item">Cras justo odio</a>
+                    {applications.map(function(application) {
+                      return (<a href={"/applications/" + application.id} className="list-group-item"> {"Application " + application.id}</a>);
+                    })}
                   </ul>
                 </div>
             </Panel>
