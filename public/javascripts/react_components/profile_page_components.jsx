@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
 
 var ProfilePage = React.createClass({
-  
+
   render: function() {
     return(
       <div>
@@ -40,7 +40,15 @@ var ProfilePage = React.createClass({
                 </Panel> 
               </div>
               <div className="col-md-6 text-center">
-                <Panel id="interests" title="Interests"> </Panel>
+                <Panel id="interests" title="Interests"> 
+                  {user.interests.map(function(interest) {
+                    return(
+                      <div className="list-group-item"> 
+                        {interest} 
+                      </div> 
+                    );
+                  })}
+                </Panel>
               </div>
             </div>
 
