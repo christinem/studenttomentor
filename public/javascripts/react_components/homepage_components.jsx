@@ -27,6 +27,11 @@ var HomePage = React.createClass({
     return(
       <div>
         <NavBar />
+
+        <div className="page-header">
+          <h1 className="title"> Your Dashboard </h1>
+        </div>
+        
         <div className="container">
           <div className="col-md-6 text-center"> 
             <Panel id="current_application" title="Current Applications">
@@ -75,6 +80,10 @@ var HomePage = React.createClass({
     return(
       <div> 
         <NavBar />
+
+        <div className="page-header">
+          <h1 className="title"> Your Dashboard </h1>
+        </div>
 
         <div className="container">
           <div className = "row">        
