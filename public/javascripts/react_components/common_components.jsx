@@ -27,7 +27,7 @@ export var NavBar = React.createClass({
               <li><a href={"/application_page/" + this.state.user.id}>Create a New Application</a></li>
             </ul>
           </li>
-          <li><a href="#">Advanced Search</a></li> 
+          <li><a href={"/search/" + user.id}>Advanced Search</a></li> 
         </ul>
       );
     } else {

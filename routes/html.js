@@ -43,6 +43,12 @@ exports.viewApplicationPage = function(req, res) {
     }); 
 };
 
+exports.searchPage = function(req, res) {
+    Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('search_page', { title: 'Search', user: JSON.stringify(user) });
+    }); 
+};
+
 // app.get('/', function(req, res) {
 //     res.render('login', {user: req.user});
 // })
