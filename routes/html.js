@@ -5,6 +5,10 @@ exports.loginPage = function(req, res) {
     res.render('login');
 };
 
+exports.registerPage = function(req, res) {
+    res.render('register', {title: 'Register'});
+};
+
 exports.homePage = function(req, res) {
 	Models.User.findById(req.params.user_id).then(function(user) {
         res.render('homepage', { title: 'Dashboard', user: JSON.stringify(user) });
@@ -36,6 +40,12 @@ exports.viewApplicationPage = function(req, res) {
                                              user: JSON.stringify(user),
                                              application: JSON.stringify(application) });
         })        
+    }); 
+};
+
+exports.searchPage = function(req, res) {
+    Models.User.findById(req.params.user_id).then(function(user) {
+        res.render('search_page', { title: 'Search', user: JSON.stringify(user) });
     }); 
 };
 

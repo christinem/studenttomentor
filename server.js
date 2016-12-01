@@ -30,15 +30,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/current_user', function(req, res) {
-  if (req.user === undefined) {
-    // The user is not logged in
-    res.json({});
-  } else {
-    res.json(req.user);
-  }
-});
-
 // ---------- Routes for Users ---------- //
 app.get('/users', user_routes.findUsers);
 
@@ -84,8 +75,8 @@ app.get('/profile_page/:user_id', auth, html_routes.profilePage);
 app.get('/application_page/:user_id', auth, html_routes.applicationPage);
 app.get('/user/:user_id/view_application_page/:application_id', 
   auth, html_routes.viewApplicationPage);
-
-// app.get('/register', html_routes.registerPage);
+app.get('/search/:user_id', auth, html_routes.searchPage); 
+app.get('/register', html_routes.registerPage);
 
 // app.post('/login',
 //   passport.authenticate('local', { successRedirect: '/homepage',

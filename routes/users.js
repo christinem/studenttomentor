@@ -263,6 +263,7 @@ exports.updateStudent = function(req, res) {
         birthday: req.body.birthday,
         interests: req.body.interests,
         about_text: req.body.about_text,
+        student_number: req.body.student_number,
         password: req.body.password}, {
             where: {
                 id: req.query.id,

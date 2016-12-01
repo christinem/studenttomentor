@@ -32,6 +32,14 @@ var LoginForm = React.createClass({
                      type="submit" 
                      value="Login" />
             </form>
+            <div className="row">
+              <div className="col-md-12 text-center">
+                <a href={"/register"} 
+                   className="btn btn-default" 
+                   role="button"> Register
+                </a>
+              </div>
+            </div>
           </Panel>
         </div>
       </div>
