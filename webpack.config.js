@@ -12,6 +12,7 @@ var config = {
     login_components: APP_DIR + '/login_components.jsx',
     homepage_components: APP_DIR + '/homepage_components.jsx', 
     profile_page_components: APP_DIR + '/profile_page_components.jsx'},
+    profile_page_components: APP_DIR + '/register_components.jsx'}
   output: {
     path: BUILD_DIR,
     filename: '[name].js'

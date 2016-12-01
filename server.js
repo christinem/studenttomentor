@@ -79,6 +79,7 @@ var auth = function(req, res, next) {
 
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
+app.get('/register', auth, html_routes.registerPage);
 app.get('/homepage', auth, html_routes.homePage);
 // app.get('/student_dashboard', auth, html_routes.studentDashboard);
 // app.get('/mentor_dashboard', auth, html_routes.adminDashboard);

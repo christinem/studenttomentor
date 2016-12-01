@@ -7,11 +7,9 @@ var RegisterPage = React.createClass ({
 		return (
 			<div>
         <NavBar />
-
         <div className="page-header">
           <h1 className="title"> Welcome to StudentToMentor! </h1>
         </div>
-
         <RegisterForm />
       </div>
 		);
