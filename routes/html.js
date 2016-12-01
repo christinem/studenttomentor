@@ -6,7 +6,7 @@ exports.loginPage = function(req, res) {
 };
 
 exports.registerPage = function(req, res) {
-    res.render('register');
+    res.render('register', {title: 'Register'});
 };
 
 exports.homePage = function(req, res) {
