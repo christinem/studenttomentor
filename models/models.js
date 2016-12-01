@@ -78,30 +78,30 @@ var Interest = connection.define('interests', {
 connection.sync({force: true})
     .then(function(err) {
         User.create({first_name: "Christine", last_name: "Murad", gender: "Female", 
-          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          student_number: 123456789, birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']});
 
         User.create({first_name: "Eugene", last_name: "Cheung", gender: "Male", 
-          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          student_number: 123456789, birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "s", email: "eugene@hello.com", password: 'hello', interests: ['AI', 'HCI']});
 
         User.create({first_name: "Blaze", last_name: "Calaycay", gender: "Male", 
-          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+          student_number: 123456789, birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "s", email: "blaze@hello.com", password: 'hello', interests: ['AI', 'HCI']});
 
         User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
           email: "goodbye@goodbye.com", password: 'goodbye'});
 
         User.create({first_name: "Karen", last_name: "Reid", gender: "Female", 
-          birthday: "September 6, 2016", about_text: "Hello",
+          birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "m", email: "karen@cookies.com", password: 'cookies'});
 
         User.create({first_name: "Shen", last_name: "Ta", gender: "Male", 
-          birthday: "September 6, 2016", about_text: "Hello",
+          birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "m", email: "shen@cookies.com", password: 'cookies'});
 
         User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
-          birthday: "September 6, 2016", about_text: "Hello",
+          birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
 
         Application.create({expected_grad: "2016", past_participation: false, 

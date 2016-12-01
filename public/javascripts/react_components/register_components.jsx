@@ -81,7 +81,7 @@ var RegisterForm = React.createClass ({
                 <a href={"/login"} 
                    className="btn btn-default" 
                    role="button"
-                   onClick={this.createUser}> Save
+                   onClick={this.createUser}> Register
                 </a>
               </div>
             </div>
