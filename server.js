@@ -75,7 +75,7 @@ app.get('/profile_page/:user_id', auth, html_routes.profilePage);
 app.get('/application_page/:user_id', auth, html_routes.applicationPage);
 app.get('/user/:user_id/view_application_page/:application_id', 
   auth, html_routes.viewApplicationPage);
-
+app.get('/search/:user_id', auth, html_routes.searchPage); 
 // app.get('/register', html_routes.registerPage);
 
 // app.post('/login',

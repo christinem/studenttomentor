@@ -17,9 +17,9 @@ var SearchPage = React.createClass ({
 	render: function() {
 
 		if (this.state.listUsers) {
-			pageContents = <UserList />
+			var pageContents = <UserList />
 		} else {
-			pageContents = <SearchPanel onClick={this.onClick} />
+			var pageContents = <SearchPanel onClick={this.onClick} />
 		}
 
 		return (
@@ -49,7 +49,7 @@ var SearchPanel = React.createClass({
 	        		<input id="register_button" 
                      className="btn btn-default center-block" 
                      type="submit" 
-                     onClick={this.props.onClick.bind(null, this)}}
+                     onClick={this.props.onClick.bind(null, this)}
                      value="Register" />
         		</form>
         	</Panel>
@@ -62,7 +62,8 @@ var SearchPanel = React.createClass({
 var UserList = React.createClass({
 	render: function() {
 		return (
-
+			<div>
+			</div>
 		);
 	}
 });
