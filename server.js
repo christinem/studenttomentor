@@ -7,6 +7,8 @@ var session = require('express-session');
 var connection = require('./models/sequelize.js');
 
 var user_routes = require('./routes/users');
+var interest_routes = require('./routes/interests');
+var application_routes = require('./routes/applications');
 var html_routes = require('./routes/html');
 
 require('./models/userlogin.js')();
@@ -57,6 +59,17 @@ app.post('/users/students', user_routes.addStudent);
 app.put('/users/students', user_routes.updateStudent);
 app.delete('/users/students', user_routes.deleteStudent);
 
+// ---------- Routes for Interests ---------- //
+app.get('/interests', interest_routes.findInterests);
+app.post('/interests', interest_routes.addInterest);
+app.delete('/interests', interest_routes.deleteInterest);
+
+// ---------- Routes for Applications ---------- //
+app.get('/applications', application_routes.findApplications);
+app.post('/applications', application_routes.addApplication);
+app.put('/applications', application_routes.updateApplication);
+app.delete('/applications', application_routes.deleteApplication);
+
 // --------- HTML Routes ------------ //
 var auth = function(req, res, next) { 
   if (!req.isAuthenticated()) 
@@ -66,6 +79,7 @@ var auth = function(req, res, next) {
 
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
+app.get('/register', auth, html_routes.registerPage);
 app.get('/homepage', auth, html_routes.homePage);
 // app.get('/student_dashboard', auth, html_routes.studentDashboard);
 // app.get('/mentor_dashboard', auth, html_routes.adminDashboard);

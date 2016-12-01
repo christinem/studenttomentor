@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var Models = require('../models/models.js');
-require('sequelize');
+var Sequelize = require('sequelize');
 
 // ----------------------------------------------------------
 
@@ -58,6 +58,7 @@ exports.addAdmin = function(req, res) {
         defaults: {
             first_name: newAdmin.first_name,
             last_name: newAdmin.last_name,
+            password: newAdmin.password,
             type_of_user: "a",
         }
     }).then(function(result){
@@ -74,7 +75,8 @@ exports.updateAdmin = function(req, res) {
     return Models.User.update({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email}, {
+        email: req.body.email,
+        password: req.body.password}, {
             where: {
                 id: req.query.id,
                 type_of_user: "a"
@@ -109,12 +111,18 @@ exports.deleteAdmin = function(req, res) {
 
 exports.findMentors = function(req, res) {
     if (req.query.length != 0) {
-        let queries = req.query;
+        let queries = req.query
+
+        let interests_query;
+        if (req.query.interests){
+            interests_query = req.query.interests.split(',')
+            queries['interests'] = {$contains: interests_query}
+        }
+
         queries["type_of_user"] = "m";
         return Models.User.findAll({
             where: queries,
-            // attributes: ['uID', 'first_name', 'last_name', 'email', 'interests', 'about'] 
-            attributes: ['id', 'first_name', 'last_name', 'email', 'about_text'] 
+            attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text']
         }).then(function(mentors) {
             res.json(mentors);
         });
@@ -122,8 +130,7 @@ exports.findMentors = function(req, res) {
 
     return Models.User.findAll({
         where: {type_of_user: "m"},
-        // attributes: ['uID', 'first_name', 'last_name', 'email', 'interests', 'about'] 
-        attributes: ['id', 'first_name', 'last_name', 'email', 'about_text'] 
+        attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text'] 
     }).then(function(mentors) {
         res.json(mentors);
     });
@@ -141,8 +148,9 @@ exports.addMentor = function(req, res) {
             last_name: newMentor.last_name,
             gender: newMentor.gender,
             birthday: newMentor.birthday,
-            // interests: newMentor.interests,
+            interests: newMentor.interests,
             about_text: newMentor.about_text,
+            password: newMentor.password,
             type_of_user: "m",
         }
     }).then(function(result){
@@ -162,8 +170,9 @@ exports.updateMentor = function(req, res) {
         email: req.body.email,
         gender: req.body.gender,
         birthday: req.body.birthday,
-        //interests: req.body.interests,
-        about_text: req.body.about_text}, {
+        interests: req.body.interests,
+        about_text: req.body.about_text,
+        password: req.body.password}, {
             where: {
                 id: req.query.id,
                 type_of_user: "m"
@@ -197,13 +206,19 @@ exports.deleteMentor = function(req, res) {
 // ----- Students ------ //
 
 exports.findStudents = function(req, res) {
+        let queries = req.query
+
+        let interests_query;
+        if (req.query.interests){
+            interests_query = req.query.interests.split(',')
+            queries['interests'] = {$contains: interests_query}
+        }
+
     if (req.query.length != 0) {
-        let queries = req.query;
         queries["type_of_user"] = "s";
         return Models.User.findAll({
             where: queries,
-            // attributes: ['uID', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about']
-            attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'about_text']
+            attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text']
         }).then(function(students) {
             res.json(students);
         });
@@ -211,8 +226,7 @@ exports.findStudents = function(req, res) {
 
     return Models.User.findAll({
         where: {type_of_mentor: "s"},
-        // attributes: ['uID', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about']
-        attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'about_text']
+        attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text']
     }).then(function(students) {
         res.json(students);
     });
@@ -231,8 +245,9 @@ exports.addStudent = function(req, res) {
             student_number: newStudent.student_number,
             gender: newStudent.gender,
             birthday: newStudent.birthday,
-            //interests: newStudent.interests,
+            interests: newStudent.interests,
             about_text: newStudent.about_text,
+            password: newStudent.password,
             type_of_user: "s",
         }
     }).then(function(result){
@@ -252,8 +267,9 @@ exports.updateStudent = function(req, res) {
         email: req.body.email,
         gender: req.body.gender,
         birthday: req.body.birthday,
-        //interests: req.body.interests,
-        about_text: req.body.about_text}, {
+        interests: req.body.interests,
+        about_text: req.body.about_text,
+        password: req.body.password}, {
             where: {
                 id: req.query.id,
                 type_of_user: "s"

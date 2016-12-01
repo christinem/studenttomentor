@@ -1,20 +1,30 @@
+'use strict';
+
 var express = require('express');
 var app = express();
 var Models = require('../models/models.js');
 require('sequelize');
 
 
-export.findApplications = function(req, res) {
+exports.findApplications = function(req, res) {
 	if (req.query.length != 0) {
 		let queries = req.query;
 		return Models.Application.findAll({
 			where: queries,
 			attributes: ['id', 'year', 'uID']
-		});
-	}
+		}).then(function(apps) {
+            res.json(apps);
+        });
+    }
+
+    return Models.Application.findAll({
+            attributes: ['id', 'year', 'uID']
+        }).then(function(apps) {
+            res.json(apps);
+        });
 };
 
-export.addApplication = function(req, res) {
+exports.addApplication = function(req, res) {
 	let newApplication = req.body;
 
 	return Models.Application.create({
@@ -33,7 +43,7 @@ export.addApplication = function(req, res) {
 	});
 };
 
-export.updateApplication = function(req, res) {
+exports.updateApplication = function(req, res) {
 	let updatedApplication = req.body;
 
 	return Models.Application.update({
@@ -53,7 +63,7 @@ export.updateApplication = function(req, res) {
     });
 };
 
-export.deleteApplication = function(req, res) {
+exports.deleteApplication = function(req, res) {
 	return Models.Application.destroy({
         where: {
             id: req.query.id
@@ -66,6 +76,3 @@ export.deleteApplication = function(req, res) {
         } 
     });         
 };
-
-
-module.exports = app;

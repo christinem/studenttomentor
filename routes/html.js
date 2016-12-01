@@ -9,6 +9,10 @@ exports.loginPage = function(req, res) {
     res.render('login', {user: req.user});
 };
 
+exports.registerPage = function(req, res) {
+    res.render('register');
+};
+
 exports.homePage = function(req, res) {
     res.render('homepage', { title: 'Dashboard', user: req.user });
 };
