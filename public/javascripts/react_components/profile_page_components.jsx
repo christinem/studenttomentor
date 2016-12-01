@@ -26,8 +26,27 @@ var ProfilePage = React.createClass({
 
   render: function() {
     var interests = [];
-    if (user.interests) {
-      interests = user.interests;
+    var personalInfoClass = "col-md-12 text-center";
+    if ((user.type_of_user == "m") || (user.type_of_user == "s")) {
+      var interests_panel = <div className="col-md-6 text-center">
+                              <Panel id="interests" title="Interests"> 
+                                {interests.map(function(interest) {
+                                  return(
+                                    <div className="list-group-item"> 
+                                      {interest} 
+                                    </div> 
+                                  );
+                                })}
+                              </Panel>
+                            </div>
+      var about_me_panel =  <div className="row">
+                              <div className="col-md-12 text-center">
+                                <Panel id="about_me" title="About Me"> 
+                                  {user.about_text} 
+                                </Panel>
+                              </div>
+                            </div>
+      personalInfoClass = "col-md-6 text-center";
     }
 
     return(
@@ -45,7 +64,7 @@ var ProfilePage = React.createClass({
         <div className="col-md-8 text-center">
           <Panel id="profile_info" title="Profile Information">
             <div className="row">
-              <div id="personal_information" className="col-md-6 text-center">
+              <div id="personal_information" className={personalInfoClass}>
                 <Panel id="personal_info" title="Personal Information">
                   <ul className="list-group"> 
                     <div className="list-group-item"> 
@@ -61,26 +80,10 @@ var ProfilePage = React.createClass({
                   </ul>
                 </Panel> 
               </div>
-              <div className="col-md-6 text-center">
-                <Panel id="interests" title="Interests"> 
-                  {interests.map(function(interest) {
-                    return(
-                      <div className="list-group-item"> 
-                        {interest} 
-                      </div> 
-                    );
-                  })}
-                </Panel>
-              </div>
+              {interests_panel}
             </div>
 
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <Panel id="about_me" title="About Me"> 
-                  {user.about_text} 
-                </Panel>
-              </div>
-            </div>
+            {about_me_panel}
 
             <div className="row">
               <a href={"/edit_profile_page/" + user.id} 
