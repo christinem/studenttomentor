@@ -22,8 +22,6 @@ app.use(express.static(__dirname + '/'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cookieParser());
 app.use(session({secret: 'anything', resave: false, saveUninitialized: false}));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,15 +29,6 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/current_user', function(req, res) {
-  if (req.user === undefined) {
-    // The user is not logged in
-    res.json({});
-  } else {
-    res.json(req.user);
-  }
-});
 
 // ---------- Routes for Users ---------- //
 app.get('/users', user_routes.findUsers);
@@ -79,16 +68,25 @@ var auth = function(req, res, next) {
 
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
-app.get('/register', auth, html_routes.registerPage);
-app.get('/homepage', auth, html_routes.homePage);
-// app.get('/student_dashboard', auth, html_routes.studentDashboard);
-// app.get('/mentor_dashboard', auth, html_routes.adminDashboard);
-app.get('/profile_page', auth, html_routes.profilePage);
+app.get('/register', html_routes.registerPage);
+
+app.get('/homepage/:user_id', auth, html_routes.homePage);
+app.get('/edit_profile_page/:user_id', auth, html_routes.editProfilePage);
+app.get('/profile_page/:user_id', auth, html_routes.profilePage);
+app.get('/application_page/:user_id', auth, html_routes.applicationPage);
+app.get('/user/:user_id/view_application_page/:application_id', 
+  auth, html_routes.viewApplicationPage);
+
 // app.get('/register', html_routes.registerPage);
 
+// app.post('/login',
+//   passport.authenticate('local', { successRedirect: '/homepage',
+//                                    failureRedirect: '/login'}));
+
 app.post('/login',
-  passport.authenticate('local', { successRedirect: '/homepage',
-                                   failureRedirect: '/login'}));
+  passport.authenticate('local'), function(req, res) {
+      res.redirect('/homepage/' + req.user.id);
+  });
 
 app.get('/logout', function(req, res) {
   req.logout();
