@@ -5,6 +5,10 @@ exports.loginPage = function(req, res) {
     res.render('login');
 };
 
+exports.registerPage = function(req, res) {
+    res.render('register');
+};
+
 exports.homePage = function(req, res) {
 	Models.User.findById(req.params.user_id).then(function(user) {
         res.render('homepage', { title: 'Dashboard', user: JSON.stringify(user) });
