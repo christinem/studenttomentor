@@ -30,15 +30,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/current_user', function(req, res) {
-  if (req.user === undefined) {
-    // The user is not logged in
-    res.json({});
-  } else {
-    res.json(req.user);
-  }
-});
-
 // ---------- Routes for Users ---------- //
 app.get('/users', user_routes.findUsers);
 

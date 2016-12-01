@@ -81,6 +81,13 @@ var ProfilePage = React.createClass({
                 </Panel>
               </div>
             </div>
+
+            <div className="row">
+              <a href={"/edit_profile_page/" + user.id} 
+                 className="btn btn-default" 
+                 role="button"> Edit Profile
+              </a>
+            </div>
           </Panel>
           
         </div>
