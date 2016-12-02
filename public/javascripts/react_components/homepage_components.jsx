@@ -14,7 +14,7 @@ var HomePage = React.createClass({
 
   componentDidMount: function() {
     var that = this;
-    $.getJSON("/applications?uID=" + user.id, function(applications) {
+    $.getJSON("/applications?uID=" + current_user.id, function(applications) {
       that.setState({applications: applications});
     });
   },
@@ -39,7 +39,7 @@ var HomePage = React.createClass({
                   <p>Click on existing applications to view their status:</p>
                   <ul className="list-group">
                     {applications.map(function(application) {
-                      return (<a href={"/user/" + user.id + "/view_application_page/" + application.id} 
+                      return (<a href={"/user/" + current_user.id + "/view_application_page/" + application.id} 
                         className="list-group-item"> {"Application " + application.id}</a>);
                     })}
                   </ul>
@@ -49,7 +49,7 @@ var HomePage = React.createClass({
             <Panel title="New Application">
               <div>
                 <p>Click here to create a new application</p>
-               <a href={"/application_page/" + user.id} className="btn btn-default" role="button">New Application</a>
+               <a href={"/user/" + current_user.id + "/application_page"} className="btn btn-default" role="button">New Application</a>
               </div>
             </Panel>
           </div>
@@ -61,14 +61,14 @@ var HomePage = React.createClass({
                 <SearchBar />
 
                 <p>Or click here to perform an advanced search</p>
-                <a href={"/search/" + user.id} className="btn btn-default" role="button">Advanced Search</a>
+                <a href={"/user/" + current_user.id + "/search"} className="btn btn-default" role="button">Advanced Search</a>
               </div>
             </Panel>
 
             <Panel title="Edit Profile">
               <div>
                 <p>Click here to edit your profile</p>
-                <a href={"/edit_profile_page/" + user.id} className="btn btn-default" role="button">Edit Profile</a>
+                <a href={"/user/" + current_user.id + "/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
               </div>
             </Panel>
           </div>
@@ -132,7 +132,7 @@ var HomePage = React.createClass({
               <Panel title="Edit Profile">
                 <div>
                   <p>Click here to edit your profile</p>
-                  <a href={"/edit_profile_page/" + user.id} className="btn btn-default" role="button">Edit Profile</a>
+                  <a href={"/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
                 </div>
               </Panel>
             </div>
@@ -143,7 +143,7 @@ var HomePage = React.createClass({
   },
 
   render: function() {
-    if (user.type_of_user == "a") {
+    if (current_user.type_of_user == "a") {
       return(
         <div>
           {this.renderAdminDashboard()}

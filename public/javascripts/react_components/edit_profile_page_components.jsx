@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
 
 var ProfilePage = React.createClass({
-  registerUser: function() {
+  updateUser: function() {
     var url = "/users/admins?id=" + user.id;
     var data = {
       first_name: $("#first_name").val(),
@@ -29,7 +29,7 @@ var ProfilePage = React.createClass({
       type: "PUT",
       contentType:"application/json",
       data: JSON.stringify(data),
-      dataType:"text", 
+      dataType:"text" 
     });
   },
 
@@ -130,10 +130,10 @@ var ProfilePage = React.createClass({
             {about_me_panel}
 
             <div className="row">
-              <a href={"/profile_page/" + user.id} 
+              <a href={"/user/" + current_user.id +"/profile_page/" + user.id} 
                  className="btn btn-default" 
                  role="button"
-                 onClick={this.registerUser}> Save
+                 onClick={this.updateUser}> Save
               </a>
             </div>
           </Panel>

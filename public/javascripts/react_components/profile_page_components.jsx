@@ -24,6 +24,20 @@ var ProfilePage = React.createClass({
     }
   },
 
+  deleteUser: function() {
+    if (user.type_of_user == "m") {
+      var url = "/users/mentors?id=" + user.id;
+    } else if (user.type_of_user == "s") {
+      var url = "/users/students?id=" + user.id;
+    }
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      dataType: "text"
+    });
+  },
+
   render: function() {
     var interests = [];
     var personalInfoClass = "col-md-12 text-center";
@@ -38,17 +52,34 @@ var ProfilePage = React.createClass({
                                   );
                                 })}
                               </Panel>
-                            </div>
+                            </div>;
       var about_me_panel =  <div className="row">
                               <div className="col-md-12 text-center">
                                 <Panel id="about_me" title="About Me"> 
                                   {user.about_text} 
                                 </Panel>
                               </div>
-                            </div>
+                            </div>;
       personalInfoClass = "col-md-6 text-center";
     }
 
+    if ((current_user.type_of_user == "a") || (user.id == current_user.id)) {
+      var edit_div = 
+                <a href={"/user/" + current_user.id + "/edit_profile_page/" + user.id} 
+                   className="btn btn-default" 
+                   role="button"> Edit Profile
+                </a>;
+    }
+
+    if ((current_user.type_of_user == "a") && (user.id != current_user.id)) {
+       var delete_div = 
+                <a href={"/user/" + current_user.id + "/homepage"} 
+                           className="btn btn-default" 
+                           role="button"
+                           onClick={this.deleteUser}> Delete Profile
+                </a>;
+    }
+ 
     return(
       <div>
         <NavBar />
@@ -85,11 +116,9 @@ var ProfilePage = React.createClass({
 
             {about_me_panel}
 
-            <div className="row">
-              <a href={"/edit_profile_page/" + user.id} 
-                 className="btn btn-default" 
-                 role="button"> Edit Profile
-              </a>
+             <div className="row">
+              {edit_div}
+              {delete_div}
             </div>
           </Panel>
           
