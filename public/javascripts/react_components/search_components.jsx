@@ -42,11 +42,11 @@ var SearchPage = React.createClass({
 	    		if (key == "interest") {
 	    			var queryArray = formData[key].split(";");
 	    			for (var query of queryArray) {
-	    				if (!this.searchInterests(query, user["interests"])) {
-	    					return false;
+	    				if (this.searchInterests(query, user["interests"])) {
+	    					return true;
 	    				}
 	    			}
-	    			return true;
+	    			return false;
 
 	    		} else {
 	    			return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
