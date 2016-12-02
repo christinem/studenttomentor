@@ -34,7 +34,7 @@ exports.findAdmins = function(req, res) {
         queries["type_of_user"] = "a";
         return Models.User.findAll({
             where: queries,
-            attributes: ['id', 'first_name', 'last_name', 'email'] 
+            attributes: ['id', 'first_name', 'last_name', 'email', 'type_of_user'] 
         }).then(function(admins) {
             res.json(admins);
         });
@@ -42,7 +42,7 @@ exports.findAdmins = function(req, res) {
 
     return Models.User.findAll({
         where: {type_of_mentor: "a"},
-        attributes: ['id', 'first_name', 'last_name', 'email'] 
+        attributes: ['id', 'first_name', 'last_name', 'email', 'type_of_user'] 
     }).then(function(admins) {
         res.json(admins);
     });
@@ -119,7 +119,7 @@ exports.findMentors = function(req, res) {
         queries["type_of_user"] = "m";
         return Models.User.findAll({
             where: queries,
-            attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text']
+            attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text', 'type_of_user']
         }).then(function(mentors){
             res.json(mentors);
         });
@@ -127,7 +127,7 @@ exports.findMentors = function(req, res) {
 
     return Models.User.findAll({
         where: {type_of_user: "m"},
-        attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text'] 
+        attributes: ['id', 'first_name', 'last_name', 'email', 'interests', 'about_text', 'type_of_user'] 
     }).then(function(mentors){
         res.json(mentors);
     });
@@ -218,7 +218,7 @@ exports.findStudents = function(req, res) {
         queries["type_of_user"] = "s";
         return Models.User.findAll({
             where: queries,
-            attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text']
+            attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text', 'type_of_user']
         }).then(function(students) {
             res.json(students);
         });
@@ -226,7 +226,7 @@ exports.findStudents = function(req, res) {
 
     return Models.User.findAll({
         where: {type_of_mentor: "s"},
-        attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text']
+        attributes: ['id', 'student_number', 'first_name', 'last_name', 'email', 'interests', 'about_text', 'type_of_user']
     }).then(function(students) {
         res.json(students);
     });
