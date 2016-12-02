@@ -184,6 +184,12 @@ exports.updateMentor = function(req, res) {
 };
 
 exports.deleteMentor = function(req, res) {
+    Models.Application.destroy({
+        where: {
+            uID: req.query.id
+        }
+    });
+    
     return Models.User.destroy({
         where: {
             id: req.query.id,
@@ -280,7 +286,14 @@ exports.updateStudent = function(req, res) {
 };
 
 exports.deleteStudent = function(req, res) {
-     return Models.User.destroy({
+
+    Models.Application.destroy({
+        where: {
+            uID: req.query.id
+        }
+    });
+
+    return Models.User.destroy({
         where: {
             id: req.query.id,
             type_of_user: 's'
