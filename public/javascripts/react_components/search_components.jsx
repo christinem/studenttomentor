@@ -108,8 +108,10 @@ var SearchPage = React.createClass({
 			arr.push(<li className="list-group-item">Email: {user.email}</li>);
 			arr.push(<li className="list-group-item">Interests: {interests}</li>);
 			arr.push(<li className="list-group-item">About: {user.about_text}</li>);
-			arr.push(<a className="list-group-item" href="">View Profile</a>);
-			filtered.push(<ul>{arr}</ul>);
+			arr.push(<li className="list-group-item">
+        <a className="btn btn-default" role="button" 
+        href={"/user/" + current_user.id + "/profile_page/" + user.id}>View Profile</a></li>);
+			filtered.push(<ul className="list-group">{arr}</ul>);
 			filtered.push(<br />);
 		}
 
