@@ -73,7 +73,7 @@ var ApplicationPage = React.createClass({
         </div>
         <div className="row">
         <div className="col-md-12 text-center">
-        <a href={"/homepage/" + user.id} 
+        <a href={"/user/" + current_user.id + "/homepage/"} 
                  className="btn btn-default" 
                  role="button"
                  onClick={this.createApp}> Submit

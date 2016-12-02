@@ -69,10 +69,10 @@ var auth = function(req, res, next) {
 app.get('/', html_routes.loginPage);
 app.get('/login', html_routes.loginPage);
 
-app.get('/homepage/:user_id', auth, html_routes.homePage);
-app.get('/edit_profile_page/:user_id', auth, html_routes.editProfilePage);
+app.get('/user/:current_user_id/homepage/', auth, html_routes.homePage);
+app.get('/user/:current_user_id/edit_profile_page/:user_id', auth, html_routes.editProfilePage);
 app.get('/user/:current_user_id/profile_page/:user_id', auth, html_routes.profilePage);
-app.get('/application_page/:user_id', auth, html_routes.applicationPage);
+app.get('/user/:current_user_id/application_page/', auth, html_routes.applicationPage);
 app.get('/user/:user_id/view_application_page/:application_id', auth, html_routes.viewApplicationPage);
 app.get('/user/:user_id/search/', auth, html_routes.searchPage); 
 app.get('/register', html_routes.registerPage);
@@ -83,7 +83,7 @@ app.get('/register', html_routes.registerPage);
 
 app.post('/login',
   passport.authenticate('local'), function(req, res) {
-      res.redirect('/homepage/' + req.user.id);
+      res.redirect('/user/' + req.user.id + '/homepage/');
   });
 
 app.get('/logout', function(req, res) {

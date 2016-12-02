@@ -52,7 +52,7 @@ var ProfilePage = React.createClass({
     if ((current_user.type_of_user == "a") || (user.id == current_user.id)) {
       var edit_and_delete_divs = 
               <div className="row">
-                <a href={"/edit_profile_page/" + user.id} 
+                <a href={"/user/" + current_user.id + "/edit_profile_page/" + user.id} 
                    className="btn btn-default" 
                    role="button"> Edit Profile
                 </a>

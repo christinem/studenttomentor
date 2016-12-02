@@ -130,7 +130,7 @@ var ProfilePage = React.createClass({
             {about_me_panel}
 
             <div className="row">
-              <a href={"/profile_page/" + user.id} 
+              <a href={"/user/" + current_user.id +"/profile_page/" + user.id} 
                  className="btn btn-default" 
                  role="button"
                  onClick={this.registerUser}> Save
