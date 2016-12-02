@@ -41,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
   app.get('/user/:current_user_id/application_page/', auth, html_routes.applicationPage);
   app.get('/user/:user_id/view_application_page/:application_id', auth, html_routes.viewApplicationPage);
   app.get('/user/:user_id/search/', auth, html_routes.searchPage); 
+  app.get('/user/:current_user_id/view_all/:type', auth, html_routes.viewAllPage);
   app.get('/register', html_routes.registerPage);
 
   app.post('/login',

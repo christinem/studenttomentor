@@ -89,14 +89,14 @@ var HomePage = React.createClass({
                 <Panel title="Profile Search" ref="panelBody">
                   <div>
                     <p>Click here to perform an advanced profile search</p>
-                    <button type="button" className="btn btn-default">Advanced Search</button>
+                    <a href={"/user/" + current_user.id + "/search"} className="btn btn-default" role="button">Advanced Search</a>
                   </div>
                 </Panel>
 
                 <Panel title="Edit Profile">
                   <div>
                     <p>Click here to edit your profile</p>
-                    <a href={"/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
+                    <a href={"/user/" + current_user.id + "/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
                   </div>
                 </Panel>
             </div>
@@ -105,14 +105,14 @@ var HomePage = React.createClass({
                 <Panel title="View All Profiles">
                   <div>
                     <p>Click here to view all Profiles</p>
-                    <a href="#" className="btn btn-default" role="button">View all Profiles</a>
+                    <a href={"/user/" + current_user.id + "/view_all/users"} className="btn btn-default" role="button">View all Profiles</a>
                   </div>
                 </Panel>
 
                 <Panel title="View All Applications">
                   <div>
                     <p>Click here to view all Applications</p>
-                    <a href="#" className="btn btn-default" role="button">View all Applications</a>
+                    <a href={"/user/" + current_user.id + "/view_all/applications"} className="btn btn-default" role="button">View all Applications</a>
                   </div>
                 </Panel>
             </div>

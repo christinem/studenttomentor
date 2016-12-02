@@ -16,7 +16,8 @@ var config = {
     edit_profile_page_components: APP_DIR + '/edit_profile_page_components.jsx',
     application_page_components: APP_DIR + '/application_page_components.jsx',
     view_application_components: APP_DIR + '/view_application_components.jsx',
-    search_page_components: APP_DIR + '/search_components.jsx'},
+    search_page_components: APP_DIR + '/search_components.jsx',
+    view_all_page_components: APP_DIR + '/view_all_page_components.jsx'},
   output: {
     path: BUILD_DIR,
     filename: '[name].js'

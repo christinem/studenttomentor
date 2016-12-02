@@ -54,3 +54,21 @@ exports.searchPage = function(req, res) {
     res.render('search_page', { title: 'Search', current_user: JSON.stringify(user) });
   }); 
 };
+
+exports.viewAllPage = function(req, res) {
+  Models.User.findById(req.params.current_user_id).then(function(current_user) {
+    if (req.params.type == "users") {
+      Models.User.findAll().then(function(users) {
+         res.render('view_all', { title: 'View All', 
+                                  current_user: JSON.stringify(current_user), 
+                                  data: JSON.stringify(users)});
+      })
+    } else if (req.params.type == "applications") {
+      Models.Application.findAll().then(function(applications) {
+         res.render('view_all', { title: 'View All', 
+                                  current_user: JSON.stringify(current_user), 
+                                  data: JSON.stringify(applications)});
+      })
+    }
+  }); 
+}
