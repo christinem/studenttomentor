@@ -16,7 +16,7 @@ var ApplicationPage = React.createClass({
       why_interested: $("#why_interested").val(),
       mentor_prefs: $("#mentor_prefs").val(),
       year: current_year,
-      uId: user.id //this doesn't get set properly. why?
+      uID: user.id 
     };
 
     $.ajax({
