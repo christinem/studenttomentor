@@ -57,10 +57,7 @@ var HomePage = React.createClass({
           <div className="col-md-6 text-center"> 
             <Panel id="profile_search" title="Profile Search" ref="panelBody">
               <div>
-                <p>Enter keywords below to perform a profile quick search:</p>
-                <SearchBar />
-
-                <p>Or click here to perform an advanced search</p>
+                <p>Click here to perform an advanced profile search</p>
                 <a href={"/user/" + current_user.id + "/search"} className="btn btn-default" role="button">Advanced Search</a>
               </div>
             </Panel>
@@ -91,30 +88,24 @@ var HomePage = React.createClass({
             <div className="col-md-6 text-center"> 
                 <Panel title="Profile Search" ref="panelBody">
                   <div>
-                    <p>Enter keywords below to perform a profile quick search:</p>
-                    <SearchBar />
-
-                    <p>Or click here to perform an advanced search</p>
+                    <p>Click here to perform an advanced profile search</p>
                     <button type="button" className="btn btn-default">Advanced Search</button>
                   </div>
                 </Panel>
 
-                 <Panel title="View All Profiles">
+                <Panel title="Edit Profile">
                   <div>
-                    <p>Click here to view all Profiles</p>
-                    <a href="#" className="btn btn-default" role="button">View all Profiles</a>
+                    <p>Click here to edit your profile</p>
+                    <a href={"/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
                   </div>
                 </Panel>
             </div>
 
             <div className="col-md-6 text-center"> 
-                <Panel title="Application Search" ref="panelBody">
+                <Panel title="View All Profiles">
                   <div>
-                    <p>Enter keywords below to perform an application quick search:</p>
-                    <SearchBar />
-
-                    <p>Or click here to perform an advanced search</p>
-                    <button type="button" className="btn btn-default">Advanced Search</button>
+                    <p>Click here to view all Profiles</p>
+                    <a href="#" className="btn btn-default" role="button">View all Profiles</a>
                   </div>
                 </Panel>
 
@@ -124,17 +115,6 @@ var HomePage = React.createClass({
                     <a href="#" className="btn btn-default" role="button">View all Applications</a>
                   </div>
                 </Panel>
-            </div>
-          </div>
-
-          <div className = "row">      
-            <div className="col-md-4 col-md-offset-4 text-center">
-              <Panel title="Edit Profile">
-                <div>
-                  <p>Click here to edit your profile</p>
-                  <a href={"/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
-                </div>
-              </Panel>
             </div>
           </div>
         </div>
@@ -156,19 +136,6 @@ var HomePage = React.createClass({
         </div>
       )
     }
-  }
-});
-
-var SearchBar = React.createClass({
-  render: function() {
-    return (
-      <div className="input-group">
-        <input type="text" className="form-control" placeholder="Search for..." />
-        <span className="input-group-btn">
-          <button className="btn btn-default" type="button">Go!</button>
-        </span>
-      </div>
-    );
   }
 });
 
