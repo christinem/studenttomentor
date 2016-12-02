@@ -20,7 +20,7 @@ var SearchPage = React.createClass({
       last_name: this.refs.lname.value,
       student_number: this.refs.stunum.value,
       email: this.refs.email.value,
-      interest: this.refs.interest.value,
+      interests: this.refs.interest.value,
     };
 
     if (this.state.type == "s") {
@@ -48,28 +48,25 @@ var SearchPage = React.createClass({
 	},
 
 	filterUsers: function(formData) {
-
-		let users = this.state.users;
-
-		for (var key in formData) {
-	    if (formData[key] && user.hasOwnProperty(key)) {
-	    	users = users.filter(function (user) {
-
-	    		if (key == "interest") {
+		let users = this.state.users.splice(0);
+    var that = this;
+    users = users.filter(function(user) {
+      for (var key in formData) {
+  	    if (formData[key] && user.hasOwnProperty(key)) {
+	    		if (key == "interests") {
 	    			var queryArray = formData[key].split(";");
 	    			for (var query of queryArray) {
-	    				if (this.searchInterests(query, user["interests"])) {
-	    					return true ;
+	    				if (that.searchInterests(query, user["interests"])) {
+	    					return true;
 	    				}
 	    			}
 	    			return false;
-
 	    		} else {
     				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
     			}
-	    	}.bind(this));
+	    	}
 	    }
-		}
+		});
 
     this.setState({users: users});
   },
@@ -79,7 +76,6 @@ var SearchPage = React.createClass({
 	},
 
 	searchInterests: function(query, userInterests) {
-
     for (var i = 0; i < userInterests.length; i++) {
         if (userInterests[i].toLowerCase() == query.toLowerCase()) {
             return true;
@@ -108,8 +104,10 @@ var SearchPage = React.createClass({
 			arr.push(<li className="list-group-item">Email: {user.email}</li>);
 			arr.push(<li className="list-group-item">Interests: {interests}</li>);
 			arr.push(<li className="list-group-item">About: {user.about_text}</li>);
-			arr.push(<a className="list-group-item" href="">View Profile</a>);
-			filtered.push(<ul>{arr}</ul>);
+			arr.push(<li className="list-group-item">
+        <a className="btn btn-default" role="button" 
+        href={"/user/" + current_user.id + "/profile_page/" + user.id}>View Profile</a></li>);
+			filtered.push(<ul className="list-group">{arr}</ul>);
 			filtered.push(<br />);
 		}
 
