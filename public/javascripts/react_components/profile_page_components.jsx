@@ -50,19 +50,21 @@ var ProfilePage = React.createClass({
     }
 
     if ((current_user.type_of_user == "a") || (user.id == current_user.id)) {
-      var edit_and_delete_divs = 
-              <div className="row">
+      var edit_div = 
                 <a href={"/user/" + current_user.id + "/edit_profile_page/" + user.id} 
                    className="btn btn-default" 
                    role="button"> Edit Profile
-                </a>
-                <a href={"/edit_profile_page/" + user.id} 
-                   className="btn btn-default" 
-                   role="button"> Delete Profile
-                </a>
-              </div>;
+                </a>;
     }
 
+    if ((current_user.type_of_user == "a") && (user.id != current_user.id)) {
+       var delete_div = 
+                <a href={"/edit_profile_page/" + user.id} 
+                           className="btn btn-default" 
+                           role="button"> Delete Profile
+                </a>;
+    }
+ 
     return(
       <div>
         <NavBar />
@@ -99,7 +101,10 @@ var ProfilePage = React.createClass({
 
             {about_me_panel}
 
-            {edit_and_delete_divs}
+             <div className="row">
+              {edit_div}
+              {delete_div}
+            </div>
           </Panel>
           
         </div>
