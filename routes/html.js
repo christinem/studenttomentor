@@ -16,8 +16,11 @@ exports.homePage = function(req, res) {
 };
 
 exports.profilePage = function(req, res) {
-	Models.User.findById(req.params.user_id).then(function(user) {
-        res.render('profile_page', { title: 'Profile Page', user: JSON.stringify(user) });
+	Models.User.findById(req.params.current_user_id).then(function(current_user) {
+        Models.User.findById(req.params.user_id).then(function(user) {
+            res.render('profile_page', { title: 'Profile Page', user: JSON.stringify(user), 
+                current_user: JSON.stringify(current_user)});
+        });
     }); 
 };
 
@@ -45,7 +48,7 @@ exports.viewApplicationPage = function(req, res) {
 
 exports.searchPage = function(req, res) {
     Models.User.findById(req.params.user_id).then(function(user) {
-        res.render('search_page', { title: 'Search', user: JSON.stringify(user) });
+        res.render('search_page', { title: 'Search', current_user: JSON.stringify(user) });
     }); 
 };
 

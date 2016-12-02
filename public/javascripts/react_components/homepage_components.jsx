@@ -61,7 +61,7 @@ var HomePage = React.createClass({
                 <SearchBar />
 
                 <p>Or click here to perform an advanced search</p>
-                <a href={"/search/" + user.id} className="btn btn-default" role="button">Advanced Search</a>
+                <a href={"/user/" + user.id + "/search"} className="btn btn-default" role="button">Advanced Search</a>
               </div>
             </Panel>
 

@@ -27,7 +27,7 @@ export var NavBar = React.createClass({
               <li><a href={"/application_page/" + this.state.user.id}>Create a New Application</a></li>
             </ul>
           </li>
-          <li><a href={"/search/" + user.id}>Advanced Search</a></li> 
+          <li><a href={"/user/" + user.id + "/search"}>Advanced Search</a></li> 
         </ul>
       );
     } else {
@@ -39,7 +39,7 @@ export var NavBar = React.createClass({
     if (this.state.user) {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li><a href={"/profile_page/" + this.state.user.id}>
+          <li><a href={"/user/" + this.state.user.id + "/profile_page/" + this.state.user.id}>
             <span className="glyphicon glyphicon-user"></span> Profile Page
           </a></li>
           <li><a href="/logout">
