@@ -103,7 +103,7 @@ var SearchPage = React.createClass({
 		        		<div className="col-md-6 text-left">
 				          <div className="form-group">
 				            <label htmlFor="fname">First Name</label>
-				            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
+				            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="\D+" title="Must not contain digits. Case insensitive." />
 				          </div>
 				          <div className="form-group">
 				            <label htmlFor="stunum">Student Number</label>
@@ -113,11 +113,11 @@ var SearchPage = React.createClass({
 		        		<div className="col-md-6 text-center">
 		        			<div className="form-group">
 				            <label htmlFor="lname">Last Name</label>
-				            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
+				            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="\D+" title="Must not contain digits. Case insensitive." />
 				          </div>
 				          <div className="form-group">
 				            <label htmlFor="email">Email</label>
-				            <input className="form-control" name="email" ref="email" placeholder="example_123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
+				            <input className="form-control" name="email" ref="email" placeholder="example_123@example.com" pattern="[\w\.]+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
 				          </div>
 		        		</div>
 		        		<div className="col-md-12 text-left">

@@ -45,19 +45,19 @@ var RegisterForm = React.createClass ({
         <div className="col-md-6 col-md-offset-3 text-center">
           <Panel title="Register">
             <div className="list-group-item"> 
-              <p> Email: </p> <input type="text" id="email" placeholder="example@example.com" />     
+              <p> Email*: </p> <input type="text" id="email" placeholder="example_123@example.com" required pattern="[\w\.]+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />     
             </div> 
             <div className="list-group-item"> 
-              <p> Password: </p> <input type="password" id="password" placeholder="password" />       
+              <p> Password*: </p> <input type="password" id="password" placeholder="password" required />       
             </div> 
             <div className="list-group-item"> 
-              <p> First Name: </p> <input type="text" id="first_name" placeholder="John" />         
+              <p> First Name*: </p> <input type="text" id="first_name" placeholder="John" required pattern="\D+" title="Must not contain digits." />         
             </div> 
             <div className="list-group-item"> 
-              <p> Last Name: </p> <input type="text" id="last_name" placeholder="Appleseed" />
+              <p> Last Name*: </p> <input type="text" id="last_name" placeholder="Appleseed" required pattern="\D+" title="Must not contain digits." />
             </div> 
             <div className="list-group-item"> 
-              <p> Student Number: </p> <input type="text" id="student_number" placeholder="123456789" />       
+              <p> Student Number: </p> <input type="text" id="student_number" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />       
             </div> 
             <div className="list-group-item"> 
               <p> Gender: </p> 
@@ -67,7 +67,7 @@ var RegisterForm = React.createClass ({
               </select>
             </div> 
             <div className="list-group-item"> 
-               <p> Birthday: </p> <input type="text" id="birthday" placeholder="DD/MM/YYYY" />      
+               <p> Birthday: </p> <input type="text" id="birthday" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" title="Required format: DD/MM/YYYY" />      
             </div> 
             <div className="list-group-item"> 
               <p> Interests: </p> <input type="text" id="interests" placeholder="Interests" />    
