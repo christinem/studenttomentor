@@ -38,8 +38,16 @@ var SearchPage = React.createClass({
 		for (var key in formData) {
 	    if (formData[key]) {
 	    	users = users.filter(function (user) {
+
 	    		if (key == "interest") {
-	    			return this.searchInterests(formData[key], user["interests"]);
+	    			var queryArray = formData[key].split(";");
+	    			for (var query of queryArray) {
+	    				if (!this.searchInterests(query, user["interests"])) {
+	    					return false;
+	    				}
+	    			}
+	    			return true;
+
 	    		} else {
 	    			return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
 	    		}
@@ -50,10 +58,10 @@ var SearchPage = React.createClass({
 		this.setState({users: users});
 	},
 
-	searchInterests: function(query, user_interests) {
+	searchInterests: function(query, userInterests) {
 
-    for (var i = 0; i < user_interests.length; i++) {
-        if (user_interests[i].toLowerCase() == query.toLowerCase()) {
+    for (var i = 0; i < userInterests.length; i++) {
+        if (userInterests[i].toLowerCase() == query.toLowerCase()) {
             return true;
         }
     }
@@ -106,13 +114,13 @@ var SearchPage = React.createClass({
 			          </div>
 			          <div className="form-group">
 			            <label htmlFor="email">Email</label>
-			            <input className="form-control" name="email" ref="email" placeholder="example123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the placeholder email." />
+			            <input className="form-control" name="email" ref="email" placeholder="example_123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
 			          </div>
 	        		</div>
 	        		<div className="col-md-12 text-left">
 		        		<div className="form-group">
 			            <label htmlFor="interest">Interest</label>
-			            <input className="form-control" name="interest" ref="interest" placeholder="Interest" pattern="[A-Za-z]+" />
+			            <input className="form-control" name="interest" ref="interest" placeholder="To search for multiple interests, use a semicolon (without whitespace) as delimiter" />
 				        </div>
 				      </div>
 	        		<input id="register_button" 
