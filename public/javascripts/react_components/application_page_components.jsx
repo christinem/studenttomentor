@@ -43,9 +43,17 @@ var ApplicationPage = React.createClass({
 
             <div className="row">
               <div className="col-md-12 text-center">
-                <Panel id="why_interested" title="Why are you interested in the mentorship program"> 
-                   <input type="text" className="form-control" placeholder="Year" aria-describedby="basic-addon1">
+                <Panel title="Why are you interested in the mentorship program"> 
+                   <input type="text" id="why_interested" className="form-control" aria-describedby="basic-addon1">
                     </input>
+                </Panel>
+              </div>
+            </div>
+
+             <div className="row">
+              <div className="col-md-12 text-center">
+                <Panel title="Do you have any preferences for mentors?"> 
+                    <textarea class="form-control" rows="5" id="mentor_prefs"></textarea>
                 </Panel>
               </div>
             </div>

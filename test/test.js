@@ -5,7 +5,7 @@ let chaiHttp = require('chai-http');
 let should = chai.should();
 let expect = chai.expect;
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize("postgres://localhost:5432/teststudenttomentor", {logging: false});
+var sequelize = new Sequelize("postgres://localhost:5432/studenttomentor", {logging: false});
 
 require('sequelize');
 var Models = require('../models/models.js');
@@ -14,47 +14,47 @@ chai.use(chaiHttp);
 
 
 //Our parent block
-describe('Users', () => {
-    before((done) => { //Before running tests we populate the test database
-        // sequelize.sync({ force: true}).then(function () { done(); }, function(err){done(err);});
+describe('Tests', () => {
+    // before((done) => { //Before running tests we populate the test database
+    //     // sequelize.sync({ force: true}).then(function () { done(); }, function(err){done(err);});
 
-        User.create({first_name: "Christine", last_name: "Murad", gender: "Female", 
-          student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
-          type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']});
+    //     Models.User.create({first_name: "Christine", last_name: "Murad", gender: "Female", 
+    //       student_number: 123456789, birthday: "September 6, 2016", about_text: "Hello",
+    //       type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: ['AI', 'HCI']});
 
-        User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
-          email: "goodbye@goodbye.com", password: 'goodbye'});
+    //     Models.User.create({first_name: "Christina", last_name: "Chen", type_of_user: "a", 
+    //       email: "goodbye@goodbye.com", password: 'goodbye'});
 
-        User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
-          birthday: "September 6, 2016", about_text: "Hello",
-          type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
+    //     Models.User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
+    //       birthday: "September 6, 2016", about_text: "Hello",
+    //       type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
 
-        Application.create({expected_grad: "2016", past_participation: false, 
-            why_interested: "It's awesome", mentor_prefs: "None", year: 2015, uID: 1});
+    //     Models.Application.create({expected_grad: "2016", past_participation: false, 
+    //         why_interested: "It's awesome", mentor_prefs: "None", year: 2015, uID: 1});
 
-        Application.create({expected_grad: "2017", past_participation: true, 
-            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 1});
+    //     Models.Application.create({expected_grad: "2017", past_participation: true, 
+    //         why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 1});
 
-        Application.create({expected_grad: "2017", past_participation: true, 
-            why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 2});
+    //     Models.Application.create({expected_grad: "2017", past_participation: true, 
+    //         why_interested: "It's awesome", mentor_prefs: "None", year: 2016, uID: 2});
 
-        Interest.create({interest_string: "AI"});
+    //     Models.Interest.create({interest_string: "AI"});
 
-        Interest.create({interest_string: "HCI"});
-    });
+    //     Models.Interest.create({interest_string: "HCI"});
+    // });
 
-    after(function() {
-      //After the tests, empty the test database so it will be squeaky clean next time
-      Models.User.destroy({truncate: true}, (err) => {
-        done();        
-      });
-      Models.Application.destroy({truncate: true}, (err) => {
-        done();        
-      });
-      Models.Interest.destroy({truncate: true}, (err) => {
-        done();        
-      });
-    });
+    // after(function() {
+    //   //After the tests, empty the test database so it will be squeaky clean next time
+    //   Models.User.destroy({truncate: true}, (err) => {
+    //     done();        
+    //   });
+    //   Models.Application.destroy({truncate: true}, (err) => {
+    //     done();        
+    //   });
+    //   Models.Interest.destroy({truncate: true}, (err) => {
+    //     done();        
+    //   });
+    // });
 
   /*
   * Test the /GET route for users
@@ -131,7 +131,6 @@ describe('Users', () => {
               if (err) {
                 console.log("Error: ", err)
               }
-                console.log(res);
                 expect(res).to.have.status(200);
                 res.body.should.be.a('array');
                 res.body.length.should.be.eql(3);
@@ -147,7 +146,7 @@ describe('Users', () => {
   describe('/PUT students', () => {
       it('it should PUT a student', (done) => {
         chai.request('http://localhost:3000')
-            .put('users/students/1');
+            .put('users/students/1')
             .send({first_name: "Christine", last_name: "Murad", gender: "Female", student_number: 123456789, birthday: "September 6, 2016", about_text: "Hi There!!", type_of_user: "s", email: "hello@hello.com", password: 'hello', interests: '[AI, HCI]'})
             .set('Accept', 'application/json')
             .end(function (err, res){
@@ -168,17 +167,18 @@ describe('Users', () => {
   describe('/POST students', () => {
       it('it should POST a student', (done) => {
         chai.request('http://localhost:3000')
-            .post('users/students');
-            .field('first_name': 'New')
-            .field('last_name': 'Student')
-            .field('gender': 'Female')
-            .field('student_number': 998755761)
-            .field('birthday': 'September 6, 2016')
-            .field('about_text': 'Hi There!!')
-            .field('type_of_user': 's')
-            .field('email': 'new@hello.com')
-            .field('password': 'newhello')
-            .field('interests': '[AI, HCI]')
+            .post('users/students')
+            .send({first_name: "Jam", last_name: "Lan", gender: "Female", student_number: 123456789, birthday: "September 6, 2016", about_text: "Aloha", type_of_user: "s", email: "jam@hello.com", password: 'hello', interests: '[AI, HCI]'})
+            // .field('first_name': 'New')
+            // .field('last_name': 'Student')
+            // .field('gender': 'Female')
+            // .field('student_number': 998755761)
+            // .field('birthday': 'September 6, 2016')
+            // .field('about_text': 'Hi There!!')
+            // .field('type_of_user': 's')
+            // .field('email': 'new@hello.com')
+            // .field('password': 'newhello')
+            // .field('interests': '[AI, HCI]')
             .set('Accept', 'application/json')
             .end(function (err, res){
               if (err) {
