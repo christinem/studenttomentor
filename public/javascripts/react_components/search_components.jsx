@@ -56,7 +56,7 @@ var SearchPage = React.createClass({
 			arr.push(<div className="lastName">Last Name: {user.last_name}</div>);
 			arr.push(<div className="studentNumer">Student Number: {user.student_number}</div>);
 			arr.push(<div className="email">Email: {user.email}</div>);
-			arr.push(<div className="email">Interests: {user.interests}</div>);
+			arr.push(<div className="email">Interests: {user.interests.toString()}</div>);
 			arr.push(<div className="about">About: {user.about_text}</div>);
 			arr.push(<br />);
 			filtered.push(arr);
