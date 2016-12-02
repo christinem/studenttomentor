@@ -92,14 +92,21 @@ var SearchPage = React.createClass({
 	render: function() {
 
 		var filtered = [];
+		var interests = "";
 
 		for (var user of this.state.users) {
+			if (user.interests) {
+				interests = user.interests.toString();
+			} else {
+				interests = "N/A";
+			}
+
 			var arr = [];
 			arr.push(<li className="list-group-item">First Name: {user.first_name}</li>);
 			arr.push(<li className="list-group-item">Last Name: {user.last_name}</li>);
 			arr.push(<li className="list-group-item">Student Number: {user.student_number}</li>);
 			arr.push(<li className="list-group-item">Email: {user.email}</li>);
-			arr.push(<li className="list-group-item">Interests: {user.interests}</li>);
+			arr.push(<li className="list-group-item">Interests: {interests}</li>);
 			arr.push(<li className="list-group-item">About: {user.about_text}</li>);
 			arr.push(<a className="list-group-item" href="">View Profile</a>);
 			filtered.push(<ul>{arr}</ul>);
