@@ -7,12 +7,12 @@ require('sequelize');
 
 
 exports.findApplications = function(req, res) {
-	if (req.query.length != 0) {
-		let queries = req.query;
-		return Models.Application.findAll({
-			where: queries,
-			attributes: ['id', 'year', 'uID', 'expected_grad', 'past_participation', 'why_interested', 'mentor_prefs']
-		}).then(function(apps) {
+  if (req.query.length != 0) {
+    let queries = req.query;
+    return Models.Application.findAll({
+      where: queries,
+      attributes: ['id', 'year', 'uID', 'expected_grad', 'past_participation', 'why_interested', 'mentor_prefs']
+    }).then(function(apps) {
             res.json(apps);
         });
     }
@@ -25,28 +25,28 @@ exports.findApplications = function(req, res) {
 };
 
 exports.addApplication = function(req, res) {
-	let newApplication = req.body;
+  let newApplication = req.body;
 
-	return Models.Application.create({
-		expected_grad: newApplication.expected_grad,
+  return Models.Application.create({
+    expected_grad: newApplication.expected_grad,
         past_participation: newApplication.past_participation,
         why_interested: newApplication.why_interested,
         mentor_prefs: newApplication.mentor_prefs,
         year: newApplication.year,
         uID: newApplication.uID
     }).then(function(result){
-	    if (result == 1) {
-	        res.send('Successfully added application.');
-	    } else {
-	         res.send('Error adding application.');
-     	}
-	});
+      if (result == 1) {
+          res.send('Successfully added application.');
+      } else {
+           res.send('Error adding application.');
+      }
+  });
 };
 
 exports.updateApplication = function(req, res) {
-	let updatedApplication = req.body;
+  let updatedApplication = req.body;
 
-	return Models.Application.update({
+  return Models.Application.update({
         expected_grad: updatedApplication.expected_grad,
         past_participation: updatedApplication.past_participation,
         why_interested: updatedApplication.why_interested,
@@ -64,7 +64,7 @@ exports.updateApplication = function(req, res) {
 };
 
 exports.deleteApplication = function(req, res) {
-	return Models.Application.destroy({
+  return Models.Application.destroy({
         where: {
             id: req.query.id
         }
