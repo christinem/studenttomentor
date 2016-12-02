@@ -20,7 +20,7 @@ var SearchPage = React.createClass({
       last_name: this.refs.lname.value,
       student_number: this.refs.stunum.value,
       email: this.refs.email.value,
-      interest: this.refs.interest.value,
+      interests: this.refs.interest.value,
     };
 
     if (this.state.type == "s") {
@@ -53,7 +53,7 @@ var SearchPage = React.createClass({
     users = users.filter(function(user) {
       for (var key in formData) {
   	    if (formData[key] && user.hasOwnProperty(key)) {
-	    		if (key == "interest") {
+	    		if (key == "interests") {
 	    			var queryArray = formData[key].split(";");
 	    			for (var query of queryArray) {
 	    				if (that.searchInterests(query, user["interests"])) {
@@ -76,7 +76,6 @@ var SearchPage = React.createClass({
 	},
 
 	searchInterests: function(query, userInterests) {
-
     for (var i = 0; i < userInterests.length; i++) {
         if (userInterests[i].toLowerCase() == query.toLowerCase()) {
             return true;
