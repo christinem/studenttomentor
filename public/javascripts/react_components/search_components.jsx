@@ -18,7 +18,8 @@ var SearchPage = React.createClass({
       first_name: this.refs.fname.value,
       last_name: this.refs.lname.value,
       student_number: this.refs.stunum.value,
-      email: this.refs.email.value
+      email: this.refs.email.value,
+      interest: this.refs.interest.value
     };
 
     $.get("/users/students", function (data) {
@@ -37,12 +38,27 @@ var SearchPage = React.createClass({
 		for (var key in formData) {
 	    if (formData[key]) {
 	    	users = users.filter(function (user) {
-	    		return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
-	    	});
+	    		if (key == "interest") {
+	    			return this.searchInterests(formData[key], user["interests"]);
+	    		} else {
+	    			return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
+	    		}
+	    	}.bind(this));
 	    }
 		}
 
 		this.setState({users: users});
+	},
+
+	searchInterests: function(query, user_interests) {
+
+    for (var i = 0; i < user_interests.length; i++) {
+        if (user_interests[i].toLowerCase() == query.toLowerCase()) {
+            return true;
+        }
+    }
+
+    return false;
 	},
 
 	render: function() {
@@ -76,23 +92,29 @@ var SearchPage = React.createClass({
 	        		<div className="col-md-6 text-left">
 			          <div className="form-group">
 			            <label htmlFor="fname">First Name</label>
-			            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="[A-Za-z]+" />
+			            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
 			          </div>
 			          <div className="form-group">
 			            <label htmlFor="stunum">Student Number</label>
-			            <input className="form-control" name="stunum" ref="stunum" placeholder="123456789" pattern="\d{9}(\d{1})?" />
+			            <input className="form-control" name="stunum" ref="stunum" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />
 			          </div>
 			        </div>
 	        		<div className="col-md-6 text-center">
 	        			<div className="form-group">
 			            <label htmlFor="lname">Last Name</label>
-			            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="[A-Za-z]+" />
+			            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
 			          </div>
 			          <div className="form-group">
 			            <label htmlFor="email">Email</label>
-			            <input className="form-control" name="email" ref="email" placeholder="example@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+"/>
+			            <input className="form-control" name="email" ref="email" placeholder="example123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the placeholder email." />
 			          </div>
 	        		</div>
+	        		<div className="col-md-12 text-left">
+		        		<div className="form-group">
+			            <label htmlFor="interest">Interest</label>
+			            <input className="form-control" name="interest" ref="interest" placeholder="Interest" pattern="[A-Za-z]+" />
+				        </div>
+				      </div>
 	        		<input id="register_button" 
                      className="btn btn-default center-block" 
                      type="submit" 
