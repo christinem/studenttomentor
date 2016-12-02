@@ -93,47 +93,51 @@ var SearchPage = React.createClass({
     }
 
 		return (
-			<div className="container">
-        <div id="search_column" className="col-md-12 text-center">
-        	<Panel id="advanced_search" title="Advanced Search">
-	        	<form id="search_form" action="" onSubmit={this.onSubmit}>
-	        		<div className="col-md-6 text-left">
-			          <div className="form-group">
-			            <label htmlFor="fname">First Name</label>
-			            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
-			          </div>
-			          <div className="form-group">
-			            <label htmlFor="stunum">Student Number</label>
-			            <input className="form-control" name="stunum" ref="stunum" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />
-			          </div>
-			        </div>
-	        		<div className="col-md-6 text-center">
-	        			<div className="form-group">
-			            <label htmlFor="lname">Last Name</label>
-			            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
-			          </div>
-			          <div className="form-group">
-			            <label htmlFor="email">Email</label>
-			            <input className="form-control" name="email" ref="email" placeholder="example_123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
-			          </div>
-	        		</div>
-	        		<div className="col-md-12 text-left">
-		        		<div className="form-group">
-			            <label htmlFor="interest">Interest</label>
-			            <input className="form-control" name="interest" ref="interest" placeholder="To search for multiple interests, use a semicolon (without whitespace) as delimiter" />
+			<div>
+				<NavBar />
+
+				<div className="container">
+	        <div id="search_column" className="col-md-12 text-center">
+	        	<Panel id="advanced_search" title="Advanced Search">
+		        	<form id="search_form" action="" onSubmit={this.onSubmit}>
+		        		<div className="col-md-6 text-left">
+				          <div className="form-group">
+				            <label htmlFor="fname">First Name</label>
+				            <input className="form-control" name="fname" ref="fname" placeholder="John" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
+				          </div>
+				          <div className="form-group">
+				            <label htmlFor="stunum">Student Number</label>
+				            <input className="form-control" name="stunum" ref="stunum" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />
+				          </div>
 				        </div>
-				      </div>
-	        		<input id="register_button" 
-                     className="btn btn-default center-block" 
-                     type="submit" 
-                     value="Search" />
-        		</form>
-        	</Panel>
-        	<div id="user_panel">
-        		{userList}
-        	</div>
-        </div>
-      </div>
+		        		<div className="col-md-6 text-center">
+		        			<div className="form-group">
+				            <label htmlFor="lname">Last Name</label>
+				            <input className="form-control" name="lname" ref="lname" placeholder="Smith" pattern="[A-Za-z]+" title="Must contain letters only. Case insensitive." />
+				          </div>
+				          <div className="form-group">
+				            <label htmlFor="email">Email</label>
+				            <input className="form-control" name="email" ref="email" placeholder="example_123@example.com" pattern="\w+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
+				          </div>
+		        		</div>
+		        		<div className="col-md-12 text-left">
+			        		<div className="form-group">
+				            <label htmlFor="interest">Interest</label>
+				            <input className="form-control" name="interest" ref="interest" placeholder="To search for multiple interests, use a semicolon (without whitespace) as delimiter" />
+					        </div>
+					      </div>
+		        		<input id="register_button" 
+	                     className="btn btn-default center-block" 
+	                     type="submit" 
+	                     value="Search" />
+	        		</form>
+	        	</Panel>
+	        	<div id="user_panel">
+	        		{userList}
+	        	</div>
+	        </div>
+	      </div>
+	    </div>
     );
 	}
 });
