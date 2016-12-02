@@ -3,7 +3,6 @@ var passport = require('passport');
 var user_routes = require('./users');
 var interest_routes = require('./interests');
 var application_routes = require('./applications');
-var html_routes = require('./html');
 
 module.exports = function(app) {
 
