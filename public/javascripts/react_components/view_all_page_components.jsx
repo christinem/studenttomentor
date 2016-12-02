@@ -14,12 +14,17 @@ var ViewAllPage = React.createClass({
     data.map(function(obj) {
       var new_object = {}
       Object.keys(obj).map(function(key) {
+        if (key == "id") {
+          new_object["ID"] = obj[key];
+        }
+        // User Keys
         if (key == "first_name") {
           new_object["First Name"] = obj[key];
         } else if (key == "last_name") {
           new_object["Last Name"] = obj[key];
         } else if (key == "email") {
           new_object["Email"] = obj[key];
+        // Application Keys
         } else if (key == "expected_grad") {
            new_object["Application #"] = obj["id"];
         }
@@ -32,6 +37,13 @@ var ViewAllPage = React.createClass({
   },
 
   render: function() {
+    // checking if we're viewing users or not
+    if (data[0]["first_name"] != undefined) {
+      var href = "/user/" + current_user.id + "/profile_page/"
+    } else {
+      var href = "/user/" + current_user.id + "/view_application_page/"
+    }
+
     return (
       <div>
         <NavBar />
@@ -46,7 +58,8 @@ var ViewAllPage = React.createClass({
                         return <li className="list-group-item">{key}: {data_item[key]}</li>;
                     })}
                     <li className="list-group-item">
-                      <a className="btn btn-default" role="button">View </a>
+                      <a className="btn btn-default" role="button"
+                         href={href + data_item["ID"]}>View </a>
                     </li>
                   </ul>
                 )
