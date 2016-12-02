@@ -89,14 +89,14 @@ var HomePage = React.createClass({
                 <Panel title="Profile Search" ref="panelBody">
                   <div>
                     <p>Click here to perform an advanced profile search</p>
-                    <button type="button" className="btn btn-default">Advanced Search</button>
+                    <a href={"/user/" + current_user.id + "/search"} className="btn btn-default" role="button">Advanced Search</a>
                   </div>
                 </Panel>
 
                 <Panel title="Edit Profile">
                   <div>
                     <p>Click here to edit your profile</p>
-                    <a href={"/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
+                    <a href={"/user/" + current_user.id + "/edit_profile_page/" + current_user.id} className="btn btn-default" role="button">Edit Profile</a>
                   </div>
                 </Panel>
             </div>
