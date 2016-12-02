@@ -7,8 +7,7 @@ var SearchPage = React.createClass({
 	getInitialState: function() {
 		return {
 			submitted: false,
-			users: "",
-			filtered: ""
+			users: ""
 		}
 	},
 
