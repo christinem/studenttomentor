@@ -200,15 +200,15 @@ exports.deleteMentor = function(req, res) {
 // ----- Students ------ //
 
 exports.findStudents = function(req, res) {
-    let queries = req.query;
-
-    let interests_query;
-    if (req.query.interests) {
-        interests_query = req.query.interests.split(',');
-        queries['interests'] = {$contains: interests_query};
-    }
-
     if (req.query.length != 0) {
+        let queries = req.query;
+
+        let interests_query;
+        if (req.query.interests) {
+            interests_query = req.query.interests.split(',');
+            queries['interests'] = {$contains: interests_query};
+        }
+
         queries["type_of_user"] = "s";
         return Models.User.findAll({
             where: queries,
@@ -228,7 +228,8 @@ exports.findStudents = function(req, res) {
 
 exports.addStudent = function(req, res) {
     let newStudent = req.body;
-
+    console.log('----', newStudent.student_number)
+    newStudent.student_number = parseInt(newStudent.student_number)
     return Models.User.findOrCreate({
         where: {
             email: newStudent.email,
