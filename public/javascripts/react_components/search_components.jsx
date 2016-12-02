@@ -37,7 +37,7 @@ var SearchPage = React.createClass({
 		for (var key in formData) {
 	    if (formData[key]) {
 	    	users = users.filter(function (user) {
-	    		return user[key] == formData[key];
+	    		return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
 	    	});
 	    }
 		}
