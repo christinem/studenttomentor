@@ -24,6 +24,20 @@ var ProfilePage = React.createClass({
     }
   },
 
+  deleteUser: function() {
+    if (user.type_of_user == "m") {
+      var url = "/users/mentors?id=" + user.id;
+    } else if (user.type_of_user == "s") {
+      var url = "/users/students?id=" + user.id;
+    }
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      dataType: "text"
+    });
+  },
+
   render: function() {
     var interests = [];
     var personalInfoClass = "col-md-12 text-center";
@@ -59,9 +73,10 @@ var ProfilePage = React.createClass({
 
     if ((current_user.type_of_user == "a") && (user.id != current_user.id)) {
        var delete_div = 
-                <a href={"/edit_profile_page/" + user.id} 
+                <a href={"/user/" + current_user.id + "/homepage"} 
                            className="btn btn-default" 
-                           role="button"> Delete Profile
+                           role="button"
+                           onClick={this.deleteUser}> Delete Profile
                 </a>;
     }
  
