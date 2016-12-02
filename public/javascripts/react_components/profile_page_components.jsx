@@ -38,15 +38,29 @@ var ProfilePage = React.createClass({
                                   );
                                 })}
                               </Panel>
-                            </div>
+                            </div>;
       var about_me_panel =  <div className="row">
                               <div className="col-md-12 text-center">
                                 <Panel id="about_me" title="About Me"> 
                                   {user.about_text} 
                                 </Panel>
                               </div>
-                            </div>
+                            </div>;
       personalInfoClass = "col-md-6 text-center";
+    }
+
+    if ((current_user.type_of_user == "a") || (user.id == current_user.id)) {
+      var edit_and_delete_divs = 
+              <div className="row">
+                <a href={"/edit_profile_page/" + user.id} 
+                   className="btn btn-default" 
+                   role="button"> Edit Profile
+                </a>
+                <a href={"/edit_profile_page/" + user.id} 
+                   className="btn btn-default" 
+                   role="button"> Delete Profile
+                </a>
+              </div>;
     }
 
     return(
@@ -85,12 +99,7 @@ var ProfilePage = React.createClass({
 
             {about_me_panel}
 
-            <div className="row">
-              <a href={"/edit_profile_page/" + user.id} 
-                 className="btn btn-default" 
-                 role="button"> Edit Profile
-              </a>
-            </div>
+            {edit_and_delete_divs}
           </Panel>
           
         </div>
