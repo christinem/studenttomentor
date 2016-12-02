@@ -51,19 +51,19 @@ var SearchPage = React.createClass({
 
 		for (var user of this.state.users) {
 			var arr = [];
-			arr.push(<div className="firstName">First Name: {user.first_name}</div>);
-			arr.push(<div className="lastName">Last Name: {user.last_name}</div>);
-			arr.push(<div className="studentNumer">Student Number: {user.student_number}</div>);
-			arr.push(<div className="email">Email: {user.email}</div>);
-			arr.push(<div className="email">Interests: {user.interests.toString()}</div>);
-			arr.push(<div className="about">About: {user.about_text}</div>);
-			arr.push(<a href="">View Profile</a>);
-			arr.push(<br />);
-			filtered.push(arr);
+			arr.push(<li className="list-group-item">First Name: {user.first_name}</li>);
+			arr.push(<li className="list-group-item">Last Name: {user.last_name}</li>);
+			arr.push(<li className="list-group-item">Student Number: {user.student_number}</li>);
+			arr.push(<li className="list-group-item">Email: {user.email}</li>);
+			arr.push(<li className="list-group-item">Interests: {user.interests.toString()}</li>);
+			arr.push(<li className="list-group-item">About: {user.about_text}</li>);
+			arr.push(<a className="list-group-item" href="">View Profile</a>);
+			filtered.push(<ul>{arr}</ul>);
+			filtered.push(<br />);
 		}
 
 		if (this.state.submitted) {
-    	var userList = <Panel id="user_list" title="Results">
+    	var userList = <Panel id="user_list" title="Search Results">
     								   {filtered}
                      </Panel>;
     }
