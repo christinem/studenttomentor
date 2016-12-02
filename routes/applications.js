@@ -11,14 +11,14 @@ exports.findApplications = function(req, res) {
 		let queries = req.query;
 		return Models.Application.findAll({
 			where: queries,
-			attributes: ['id', 'year', 'uID']
+			attributes: ['id', 'year', 'uID', 'expected_grad', 'past_participation', 'why_interested', 'mentor_prefs']
 		}).then(function(apps) {
             res.json(apps);
         });
     }
 
     return Models.Application.findAll({
-            attributes: ['id', 'year', 'uID']
+            attributes: ['id', 'year', 'uID', 'expected_grad', 'past_participation', 'why_interested', 'mentor_prefs']
         }).then(function(apps) {
             res.json(apps);
         });
