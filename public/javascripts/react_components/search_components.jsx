@@ -53,7 +53,7 @@ var SearchPage = React.createClass({
 		for (var user of this.state.users) {
 			var arr = [];
 			arr.push(<div className="firstName">First Name: {user.first_name}</div>);
-			arr.push(<div className="lastName">Last Name: {user.first_name}</div>);
+			arr.push(<div className="lastName">Last Name: {user.last_name}</div>);
 			arr.push(<div className="studentNumer">Student Number: {user.student_number}</div>);
 			arr.push(<div className="email">Email: {user.email}</div>);
 			arr.push(<div className="email">Interests: {user.interests}</div>);
@@ -96,7 +96,7 @@ var SearchPage = React.createClass({
 	        		<input id="register_button" 
                      className="btn btn-default center-block" 
                      type="submit" 
-                     value="Register" />
+                     value="Search" />
         		</form>
         	</Panel>
         	<div id="user_panel">
