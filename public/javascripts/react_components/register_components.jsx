@@ -96,11 +96,13 @@ var RegisterForm = React.createClass ({
 
               <div className="row">
                 <div className="col-md-12 text-center">
-                  <input id="register_button" 
-                       className="btn btn-default center-block" 
-                       type="submit" 
-                       value="Register"
-                       onClick={this.createUser} />
+                  <a href={"/login"}>
+                    <input id="register_button" 
+                         className="btn btn-default center-block" 
+                         type="submit" 
+                         value="Register"
+                         onClick={this.createUser} />
+                  </a>
                 </div>
               </div>
             </form>
