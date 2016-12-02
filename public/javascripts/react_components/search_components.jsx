@@ -48,28 +48,25 @@ var SearchPage = React.createClass({
 	},
 
 	filterUsers: function(formData) {
-
-		let users = this.state.users;
-
-		for (var key in formData) {
-	    if (formData[key] && user.hasOwnProperty(key)) {
-	    	users = users.filter(function (user) {
-
+		let users = this.state.users.splice(0);
+    var that = this;
+    users = users.filter(function(user) {
+      for (var key in formData) {
+  	    if (formData[key] && user.hasOwnProperty(key)) {
 	    		if (key == "interest") {
 	    			var queryArray = formData[key].split(";");
 	    			for (var query of queryArray) {
-	    				if (this.searchInterests(query, user["interests"])) {
-	    					return true ;
+	    				if (that.searchInterests(query, user["interests"])) {
+	    					return true;
 	    				}
 	    			}
 	    			return false;
-
 	    		} else {
     				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
     			}
-	    	}.bind(this));
+	    	}
 	    }
-		}
+		});
 
     this.setState({users: users});
   },
