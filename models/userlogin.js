@@ -1,6 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var Models = require('./models.js');
+var bcrypt = require('bcryptjs');
 
 module.exports = function () { 
 
@@ -12,13 +13,16 @@ module.exports = function () {
                     if(!user)
                       // if the user does not exist
                       return done(null, false, {message: "The user does not exist"});
-                    else if(password != user.password)
-                      // if password does not match
-                      return done(null, false, {message: "Wrong password"});
-                    else
-                      // if everything is OK, return null as the error
-                      // and the authenticated user
-                      return done(null, user);
+
+                    else {
+                      if(!bcrypt.compareSync(password, user.password))
+                        // if password does not match
+                        return done(null, false, {message: "Wrong password"});
+                      else
+                        // if everything is OK, return null as the error
+                        // and the authenticated user
+                        return done(null, user);
+                    }
                 })
                 .error(function(err){
                   // if command executed with error
