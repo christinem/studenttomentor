@@ -46,9 +46,9 @@ exports.deleteInterest = function(req, res) {
         }
     }).then(function(result){
         if(result == 1) {
-            res.send('Successfully deleted interest ' + req.query.interest + '.')
+            res.send('Successfully deleted interest ' + req.query.interest_string + '.')
         } else {
-            res.send('Interest ' + req.query.interest + ' does not exist.')
+            res.send('Interest ' + req.query.interest_string + ' does not exist.')
         } 
     });         
 };
