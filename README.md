@@ -16,6 +16,6 @@ Run `npm start` to start the web server.
 
 - Passwords are hashed using the `bsyncjs` module. When a new user registers, passwords are salted with the default of 10 rounds of processing before being stored in the database. At login, the entered password is checked against the hashed password using `compareSync` from the `bsync` module
 
-- The search page includes frontend validation by using the HTML `pattern` attribute to specify formats for certain fields
+- The search page includes frontend validation by using the HTML `pattern` attribute to check the formats of certain fields (eg. student numbers must be 9-10 digits, names cannot contain digits)
 
 - Testing
