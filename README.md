@@ -14,7 +14,7 @@ Run `npm start` to start the web server.
 
 # Enhancements
 
-- Passwords are hashed using the `bsyncjs` module. When a new user registers, passwords are salted with the default of 10 rounds before being stored in the database. At login, the entered password is checked against the hashed password using `compareSync`
+- Passwords are hashed using the `bsyncjs` module. When a new user registers, passwords are salted with the default of 10 rounds of processing before being stored in the database. At login, the entered password is checked against the hashed password using `compareSync` from the `bsync` module
 
 - The search page includes frontend validation by using the HTML `pattern` attribute to specify formats for certain fields
 
