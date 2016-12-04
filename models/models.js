@@ -100,7 +100,7 @@ connection.sync({force: true})
           birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "m", email: "shen@cookies.com", password: 'cookies'});
 
-        User.create({first_name: "Jasmine", last_name: "Lantos", gender: "Female", 
+        User.create({first_name: "Jasmin", last_name: "Lantos", gender: "Female", 
           birthday: "06/09/1994", about_text: "Hello",
           type_of_user: "m", email: "cookies@cookies.com", password: 'cookies'});
 

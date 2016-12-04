@@ -28,12 +28,12 @@ exports.addApplication = function(req, res) {
   let newApplication = req.body;
 
   return Models.Application.create({
-    expected_grad: newApplication.expected_grad,
-        past_participation: newApplication.past_participation,
-        why_interested: newApplication.why_interested,
-        mentor_prefs: newApplication.mentor_prefs,
-        year: newApplication.year,
-        uID: newApplication.uID
+      expected_grad: newApplication.expected_grad,
+      past_participation: newApplication.past_participation,
+      why_interested: newApplication.why_interested,
+      mentor_prefs: newApplication.mentor_prefs,
+      year: newApplication.year,
+      uID: newApplication.uID
     }).then(function(result){
       if (result == 1) {
           res.send('Successfully added application.');
