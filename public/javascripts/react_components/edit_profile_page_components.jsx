@@ -62,6 +62,11 @@ var ProfilePage = React.createClass({
 
   render: function() {
     var interests = [];
+
+    if (user.interests) {
+      interests = user.interests;
+    }
+
     var personalInfoClass = "col-md-12 text-center";
 
     if ((user.type_of_user == "m") || (user.type_of_user == "s")) {

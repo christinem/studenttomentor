@@ -44,9 +44,9 @@ export var NavBar = React.createClass({
           </a></li>
           <li><a href="/logout">
             <span className="glyphicon glyphicon-log-in"></span> Log Out
-          </a></li>;
+          </a></li>
         </ul>
-      );
+      )
     } else {
       return("");
     }
