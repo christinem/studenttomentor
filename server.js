@@ -8,7 +8,6 @@ var html_routes = require('./routes/html');
 var app = express();
 
 require('./models/userlogin.js')();
-require('./routes/routes.js')(app);
 
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/'));
@@ -24,6 +23,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./routes/routes.js')(app);
 
  // --------- HTML Routes ------------ //
   var auth = function(req, res, next) { 
