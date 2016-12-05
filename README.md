@@ -39,6 +39,8 @@ The model of the application is largely divided into two parts: Users and Applic
   - An application is what a user or mentor submits to apply to either be a mentor or mentee for a particular school year.
   - Students and mentors can submit applications, and can view their applications by clicking on their existing applications from the dashboard
   - Administrators can view anyone's applications
+  
+- Initial (data) users and applications are populated into the database when the app is started (the database is purged and re-populated on every restart of the node app)
 
 # Workflow
 
@@ -66,7 +68,6 @@ The model of the application is largely divided into two parts: Users and Applic
 - The search page includes frontend validation by using the HTML `pattern` attribute to check the formats of certain fields (eg. student numbers must be 9-10 digits, names cannot contain digits)
 - Testing is done using Mocha and Chai. To run the tests first run 'npm start' in one shell tab, and then run 'npm test' in another. The tests use the same database used by the main server running locally. In the future this could be improved by creating a seperate test database and pre-populating it with testable data.
 - Our web app's user interface is fully responsive
-- A user cannot delete their own profile from the app
 
 # Unimplemented Features
 
@@ -82,3 +83,5 @@ This section includes features of the app that were not implemented due to time 
 - Interests are uneditable at the moment
 - Applications are currently uneditable
 - We don't have front-end messages to show when something has succeeded or failed (for example, when updating a profile or creating new user/application)
+- A user cannot delete their own profile from the app
+- The search result displays all fields regardless of the type of user being searched, even if the field is irrelevant (for example, student number for admins). Fields that are not relevant will shows up empty or as N/A
