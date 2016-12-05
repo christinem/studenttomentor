@@ -46,6 +46,14 @@ The model of the application is largely divided into two parts: Users and Applic
 
 - Testing is done using Mocha and Chai. To run the tests first run 'npm start' in one shell tab, and then run 'npm test' in another. The tests use the same database used by the main server running locally. In the future this could be improved by creating a seperate test database and pre-populating it with testable data.
 
-# Unimplemented Aspects
+# Unimplemented Features
+
+This section includes features of the app that were not implemented due to time constraints
+
+- The matching view detailed in the proposal is missing
+
+- Administrators cannot see which user each application belongs to
 
 # Notes
+
+- Although the advanced search page does not require any fields besides user type to be entered in order to perform a search, searching with no other inputs will yield no results
