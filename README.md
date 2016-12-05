@@ -54,7 +54,7 @@ This section includes features of the app that were not implemented due to time 
 
 - Administrators cannot see which user each application belongs to
 
-- An interests table is present in the model. We intended for administrators to be able to add interests to this table so users can choose interests from a predefined list
+- An interests table is present in the model. We intended for administrators to be able to add and delete interests so users can choose interests from a predefined list
 
 # Notes
 
