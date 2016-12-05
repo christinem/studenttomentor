@@ -72,7 +72,12 @@ export var NavBar = React.createClass({
         </div>
       );
     } else {
-      return("");
+      return(
+        <ul className="nav navbar-nav">
+          <li><a href={"/login"}>Log In</a></li>
+          <li><a href={"/register"}>Register</a></li>
+        </ul>
+      );
     }
   },
 
