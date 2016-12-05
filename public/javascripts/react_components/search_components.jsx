@@ -52,21 +52,23 @@ var SearchPage = React.createClass({
     var that = this;
     users = users.filter(function(user) {
       for (var key in formData) {
-  	    if (formData[key] && user.hasOwnProperty(key)) {
-	    		if (key == "interests") {
-	    			var queryArray = formData[key].split(";");
-	    			for (var query of queryArray) {
-	    				if (that.searchInterests(query, user["interests"])) {
-	    					return true;
-	    				}
+      	if (user.hasOwnProperty(key)) {
+	  	    if (formData[key]) {
+		    		if (key == "interests") {
+		    			var queryArray = formData[key].split(";");
+		    			for (var query of queryArray) {
+		    				if (that.searchInterests(query, user["interests"])) {
+		    					return true;
+		    				}
+		    			}
+		    			return false;
+		    		} else {
+	    				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
 	    			}
-	    			return false;
-	    		} else {
-    				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
-    			}
-	    	} else if (!formData[key] && user.hasOwnProperty(key)) {
-	    		return true;
-	    	}
+		    	} else {
+		    		return true;
+		    	}
+		    }
 	    }
 		});
 
