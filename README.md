@@ -59,5 +59,3 @@ This section includes features of the app that were not implemented due to time 
 - Frontend validation was attempted with the registration page, but using form elements resulted in no data being sent to the POST request (even though data was still generated correctly on the frontend)
 
 # Notes
-
-- Although the advanced search page does not require any fields besides user type to be entered in order to perform a search, searching with no other inputs will yield no results
