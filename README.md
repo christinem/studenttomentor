@@ -63,3 +63,4 @@ This section includes features of the app that were not implemented due to time 
 - When Students register, they can currently only list one interest
 - Interests are uneditable at the moment
 - Applications are currently uneditable
+- We don't have front-end messages to show when something has succeeded or failed (for example, when updating a profile or creating new user/application)
