@@ -40,11 +40,12 @@ The model of the application is largely divided into two parts: Users and Applic
   - Students and mentors can submit applications, and can view their applications by clicking on their existing applications from the dashboard
   - Administrators can view anyone's applications
   
-- Initial (data) users and applications are populated into the database when the app is started (the database is purged and re-populated on every restart of the node app)
+- Initial data (users and applications) are populated into the database when the app is started (the database is purged and re-populated on every restart of the node app)
 
 # Workflow
 
 - You are greeting with an initial log in page in which you can log in using an existing account, or register for a new one. 
+- If you click the register button, a register page will come where they enter in profile and user information (every field must be completed), and when you press "Register", it redirects you back to the log in page so you can log in with the new user if you so choose
 - When logged in, you will get one of two dashboards
   - An admin dashboard if logged in as an admin, which includes 
     - A button that leads to a view where you can view all profiles
@@ -60,7 +61,10 @@ The model of the application is largely divided into two parts: Users and Applic
     - A button to edit your profile
 - On the advanced search page, you can search for any user in the database. You must first select a type of user in the "User Type" section. If you click Search with only the user type selected, you'll see all the users of that type in the search results. Otherwise, you can use the search options on the page to query for certain users
   - You must query by entire strings. For example, if you want to search for someone with the first name "Christine", searching for the first name "Chris" will not show any users with the first name "Christine"
-- On the right part of the nav bar, you can go straight to a read-only version of your profile. There is also a button for you to log out. 
+- On the right part of the nav bar, you can go straight to a read-only version of your profile. There is also a button for you to log out. On the left side of the nav bar, there are links to pages that user has access to the links available to them on the dashboard, so they may access them no matter what page they are on.
+- On the read-only view of the profile page, you may see an "Edit Profile" or "Delete Profile" options based on these:
+  - If you are an admin, when you are viewing anyone's profile, you will see an Edit and Delete option. When viewing your own, you will have an Edit option but not a Delete option
+  - If you are a mentor or student, when you are viewing anyone else's profile, you will have neither Edit nor Delete option. When viewing your own, you will have a Edit option but not a Delete option
 
 # Enhancements
 
