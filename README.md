@@ -84,3 +84,4 @@ This section includes features of the app that were not implemented due to time 
 - Interests are uneditable at the moment
 - Applications are currently uneditable
 - We don't have front-end messages to show when something has succeeded or failed (for example, when updating a profile or creating new user/application)
+- The search page displays all fields regardless of the type of user being searched, even if the field is irrelevant (for example, student number for admins). Fields that are not relevant will shows up empty or as N/A
