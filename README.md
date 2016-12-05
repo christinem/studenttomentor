@@ -56,6 +56,8 @@ This section includes features of the app that were not implemented due to time 
 
 - An interests table is present in the model. We intended for administrators to be able to add and delete interests so users can choose interests from a predefined list
 
+- Frontend validation was attempted with the registration page, but using form elements resulted in no data being sent to the POST request (even though data was still generated correctly on the frontend)
+
 # Notes
 
 - Although the advanced search page does not require any fields besides user type to be entered in order to perform a search, searching with no other inputs will yield no results
