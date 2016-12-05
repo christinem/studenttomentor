@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
+import * as bcrypt from "bcryptjs";
 
 var RegisterPage = React.createClass ({
 	render: function() {
@@ -18,9 +19,11 @@ var RegisterPage = React.createClass ({
 
 var RegisterForm = React.createClass ({
   createUser: function() {
+    var salt = bcrypt.genSaltSync(10);
+
     var data = {
       email: $("#email").val(),
-      password: $("#password").val(),
+      password: bcrypt.hashSync($("#password").val(), salt),
       first_name: $("#first_name").val(),
       last_name: $("#last_name").val(),
       student_number: $("#student_number").val(),

@@ -1,10 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
+import * as bcrypt from "bcryptjs";
 
 var ProfilePage = React.createClass({
   updateUser: function() {
     var url = "/users/admins?id=" + user.id;
+    var salt = bcrypt.genSaltSync(10);
+
     var data = {
       first_name: $("#first_name").val(),
       last_name: $("#last_name").val(),
@@ -13,7 +16,7 @@ var ProfilePage = React.createClass({
       email: $("#email").val(),
       gender: "", 
       student_number: "",
-      password: $("#password").val()
+      password: bcrypt.hashSync($("#password").val(), salt)
     };
 
     if (user.type_of_user == "m") {
