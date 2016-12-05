@@ -54,6 +54,8 @@ This section includes features of the app that were not implemented due to time 
 
 - Administrators cannot see which user each application belongs to
 
+- An interests table is present in the model. We intended for administrators to be able to add interests to this table so users can choose interests from a predefined list
+
 # Notes
 
 - Although the advanced search page does not require any fields besides user type to be entered in order to perform a search, searching with no other inputs will yield no results
