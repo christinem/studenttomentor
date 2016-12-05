@@ -30,7 +30,7 @@ The model of the application is largely divided into two parts: Users and Applic
   
   - Administrators have access to a list of all users. They can edit user profiles, delete users, and view applications
   
-  - All new users who register are classified as students
+  - All new users who sign up through the register page are classified as students
 
 - Applications
 
