@@ -45,3 +45,7 @@ The model of the application is largely divided into two parts: Users and Applic
 - The search page includes frontend validation by using the HTML `pattern` attribute to check the formats of certain fields (eg. student numbers must be 9-10 digits, names cannot contain digits)
 
 - Testing is done using Mocha and Chai. To run the tests first run 'npm start' in one shell tab, and then run 'npm test' in another. The tests use the same database used by the main server running locally. In the future this could be improved by creating a seperate test database and pre-populating it with testable data.
+
+# Unimplemented Aspects
+
+# Notes
