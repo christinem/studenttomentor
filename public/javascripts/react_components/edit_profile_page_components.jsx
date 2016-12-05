@@ -10,9 +10,10 @@ var ProfilePage = React.createClass({
       last_name: $("#last_name").val(),
       about_text: $("#about_text").val(),
       birthday: $("#birthday").val(),
-      email: $("email").val(),
+      email: $("#email").val(),
       gender: "", 
-      student_number: ""
+      student_number: "",
+      password: $("#password").val()
     };
 
     if (user.type_of_user == "m") {
@@ -124,6 +125,10 @@ var ProfilePage = React.createClass({
                       <b>Email:</b> 
                       <input type="text" id="email" className="form-control" 
                              defaultValue={user.email} /> 
+                    </div> 
+                    <div className="list-group-item"> 
+                      <b>Password:</b> 
+                      <input type="text" id="password" type="password" className="form-control" /> 
                     </div> 
                     {this.renderExtraPersonalInformation(user.type_of_user)}
                   </ul>
