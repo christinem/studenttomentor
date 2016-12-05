@@ -23,7 +23,7 @@ var RegisterForm = React.createClass ({
 
     var data = {
       email: $("#email").val(),
-      password: $("#password").val(),
+      password: bcrypt.hashSync($("#password").val(), salt),
       first_name: $("#first_name").val(),
       last_name: $("#last_name").val(),
       student_number: $("#student_number").val(),

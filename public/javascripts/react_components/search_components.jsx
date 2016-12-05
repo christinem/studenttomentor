@@ -151,7 +151,7 @@ var SearchPage = React.createClass({
 				          <div className="form-group">
 									  <label htmlFor="usertype">User Type:</label>
 									  <br />
-									  <label className="radio-inline"><input type="radio" name="usertype" value="s" onChange={this.changeUserType} />&nbsp;Student&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									  <label className="radio-inline"><input type="radio" name="usertype" value="s" onChange={this.changeUserType} required />&nbsp;Student&nbsp;&nbsp;&nbsp;&nbsp;</label>
 										<label className="radio-inline"><input type="radio" name="usertype" value="m" onChange={this.changeUserType} />&nbsp;Mentor&nbsp;&nbsp;&nbsp;&nbsp;</label>
 										<label className="radio-inline"><input type="radio" name="usertype" value="a" onChange={this.changeUserType} />&nbsp;Administrator</label>
 									</div>
