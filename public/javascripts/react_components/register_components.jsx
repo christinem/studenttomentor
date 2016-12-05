@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import {NavBar, Panel} from "./common_components.jsx";
+import * as bcrypt from "bcryptjs";
 
 var RegisterPage = React.createClass ({
 	render: function() {
@@ -18,9 +19,11 @@ var RegisterPage = React.createClass ({
 
 var RegisterForm = React.createClass ({
   createUser: function() {
+    var salt = bcrypt.genSaltSync(10);
+
     var data = {
       email: $("#email").val(),
-      password: $("#password").val(),
+      password: bcrypt.hashSync($("#password").val(), salt),
       first_name: $("#first_name").val(),
       last_name: $("#last_name").val(),
       student_number: $("#student_number").val(),
@@ -43,6 +46,9 @@ var RegisterForm = React.createClass ({
 		return (
 			<div className="container">
         <div className="col-md-6 col-md-offset-3 text-center">
+          <Panel title="Note">
+          <p>Make sure to fill in all the fields or else the user will not be registered correctly!</p>
+          </Panel>
           <Panel title="Register">
             <div className="list-group-item"> 
               <p> Email*: </p> <input type="text" id="email" placeholder="example_123@example.com" required pattern="[\w\.]+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />     
@@ -57,23 +63,23 @@ var RegisterForm = React.createClass ({
               <p> Last Name*: </p> <input type="text" id="last_name" placeholder="Appleseed" required pattern="\D+" title="Must not contain digits." />
             </div> 
             <div className="list-group-item"> 
-              <p> Student Number: </p> <input type="text" id="student_number" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />       
+              <p> Student Number*: </p> <input type="text" id="student_number" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />       
             </div> 
             <div className="list-group-item"> 
-              <p> Gender: </p> 
+              <p> Gender*: </p> 
               <select id="gender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             </div> 
             <div className="list-group-item"> 
-               <p> Birthday: </p> <input type="text" id="birthday" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" title="Required format: DD/MM/YYYY" />      
+               <p> Birthday*: </p> <input type="text" id="birthday" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" title="Required format: DD/MM/YYYY" />      
             </div> 
             <div className="list-group-item"> 
-              <p> Interests: </p> <input type="text" id="interests" placeholder="Interests" />    
+              <p> Interests*: </p> <input type="text" id="interests" placeholder="Interests" />    
             </div> 
             <div className="list-group-item"> 
-              <p> About: </p> <input type="text" id="about_text" placeholder="About" />
+              <p> About*: </p> <input type="text" id="about_text" placeholder="About" />
             </div> 
 
             <div className="row">
