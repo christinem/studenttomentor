@@ -42,6 +42,26 @@ The model of the application is largely divided into two parts: Users and Applic
   - Administrators can view anyone's applications
   - Students can create new applications, and can view their applications by clicking on their existing applications from the dashboard
 
+# Workflow
+
+- You are greeting with an initial log in page in which you can log in using an existing account, or register for a new one. 
+- When logged in, you will get one of two dashboards
+  - An admin dashboard if logged in as an admin, which includes 
+    - A button that leads to a view where you can view all profiles
+      - Here, you'll be greeted a view that lists every single user in the database, with some basic info, and a link to go to their profile page
+    - A button that leads to a view where you can view all applications
+      - Here, you'll be greeted a view that lists every single application in the database, with some basic info, and a link to go to the application page
+    - A button that leads to the advanced search page
+    - A button to edit your profile
+  - An non-admin dashboard if logged in as a student or mentor, which includes 
+    - A panel that lists all your existing applications
+      - Clicking on any one of these will lead you to the application page for that application
+    - A button that leads to the advanced search page
+    - A button to edit your profile
+- On the advanced search page, you can search for any user in the database. You must first select a type of user in the "User Type" section. If you click Search with only the user type selected, you'll see all the users of that type in the search results. Otherwise, you can use the search options on the page to query for certain users
+  - You must query by entire strings. For example, if you want to search for someone with the first name "Christine", searching for the first name "Chris" will not show any users with the first name "Christine"
+- On the right part of the nav bar, you can go straight to a read-only version of your profile. There is also a button for you to log out. 
+
 # Enhancements
 
 - Passwords are hashed using the `bsyncjs` module. When a new user registers, passwords are salted with the default of 10 rounds of processing before being stored in the database. At login, the entered password is checked against the hashed password using `compareSync` from the `bsync` module
