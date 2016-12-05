@@ -15,23 +15,69 @@ export var NavBar = React.createClass({
     }
   },
 
+  renderAdminOptions: function() {
+    return (
+      <ul className="nav navbar-nav">
+        <li><a href={"/user/" +  this.state.user.id + "/homepage/"}>Home</a></li>
+        <li className="dropdown">
+          <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
+          <span className="caret"></span></a>
+          <ul className="dropdown-menu">
+            <li><a href={"/user/" + this.state.user.id + "/view_all/applications"}>View All Applications</a></li>
+          </ul>
+        </li>
+        <li className="dropdown">
+          <a className="dropdown-toggle" data-toggle="dropdown" href="#">Profiles
+          <span className="caret"></span></a>
+          <ul className="dropdown-menu">
+            <li><a href={"/user/" + this.state.user.id + "/view_all/users"}>View All Profiles</a></li>
+          </ul>
+        </li>
+        <li><a href={"/user/" + this.state.user.id + "/search"}>Advanced Search</a></li> 
+      </ul>
+        
+    );
+  },
+
+  renderNonAdminOptions: function() {
+    return (
+      <ul className="nav navbar-nav">
+        <li><a href={"/user/" +  this.state.user.id + "/homepage/"}>Home</a></li>
+        <li className="dropdown">
+          <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
+          <span className="caret"></span></a>
+          <ul className="dropdown-menu">
+            <li><a href={"/user/" + this.state.user.id + "/application_page"}>Create a New Application</a></li>
+          </ul>
+        </li>
+        <li><a href={"/user/" + this.state.user.id + "/search"}>Advanced Search</a></li> 
+      </ul>
+    );
+  },
+
   renderLeftColumn: function() {
+    var options = "";
+    if (this.state.user) {
+      if (this.state.user.type_of_user == "a") {
+        options = this.renderAdminOptions();
+      } else {
+        options = this.renderNonAdminOptions();
+      }
+    }
+
     if (this.state.user) {
       return (
-        <ul className="nav navbar-nav">
-          <li><a href={"/user/" +  this.state.user.id + "/homepage/"}>Home</a></li>
-          <li className="dropdown">
-            <a className="dropdown-toggle" data-toggle="dropdown" href="#">Applications
-            <span className="caret"></span></a>
-            <ul className="dropdown-menu">
-              <li><a href={"/user/" + this.state.user.id + "/application_page"}>Create a New Application</a></li>
-            </ul>
-          </li>
-          <li><a href={"/user/" + this.state.user.id + "/search"}>Advanced Search</a></li> 
-        </ul>
+        <div>
+          {options}
+        </div>
       );
     } else {
-      return("");
+      return(
+        <ul className="nav navbar-nav">
+          <li><a href={"/login"}>Log In</a></li>
+          <li><a href={"/register"}>Register</a></li>
+        </ul>
+      );
     }
   },
 
