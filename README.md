@@ -58,4 +58,6 @@ This section includes features of the app that were not implemented due to time 
 
 - Frontend validation was attempted with the registration page, but using form elements resulted in no data being sent to the POST request (even though data was still generated correctly on the frontend)
 
+- Student numbers are not forced to be unique
+
 # Notes
