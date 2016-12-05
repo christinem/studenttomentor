@@ -30,17 +30,15 @@ Here are accounts for the three types of users that you can use to log in:
 The model of the application is largely divided into two parts: Users and Applications.
 
 - Users
-
   - There are three types of users: students, mentors, and administrators
   - All users are able to edit their own user profiles, use the advanced search page, and see the profiles of other users
-  - Administrators can edit any user profiles, delete users, and view applications
-  - Adminstrators have access to a view can view all users and all applications at once.
+  - Only administrators can edit any user profile and delete users
   - All new users who sign up through the register page are classified as students. New users may not make themselves a mentor or administrator
 
 - Applications
-
+  - An application is what a user or mentor submits to apply to either be a mentor or mentee for a particular school year.
+  - Students and mentors can submit applications, and can view their applications by clicking on their existing applications from the dashboard
   - Administrators can view anyone's applications
-  - Students can create new applications, and can view their applications by clicking on their existing applications from the dashboard
 
 # Workflow
 
@@ -84,4 +82,3 @@ This section includes features of the app that were not implemented due to time 
 - Interests are uneditable at the moment
 - Applications are currently uneditable
 - We don't have front-end messages to show when something has succeeded or failed (for example, when updating a profile or creating new user/application)
-- The search page displays all fields regardless of the type of user being searched, even if the field is irrelevant (for example, student number for admins). Fields that are not relevant will shows up empty or as N/A
