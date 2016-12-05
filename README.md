@@ -20,6 +20,24 @@ Run `npm start` to start the web server.
 
 # Design
 
+The model of the application is largely divided into two parts: Users and Applications.
+
+- Users
+
+  - There are three types of users: students, mentors, and administrators
+  
+  - All users are able to edit their user profiles, use the advanced search page, and see the profiles of other users
+  
+  - Administrators have access to a list of all users. They can edit user profiles, delete users, and view applications
+  
+  - All new users who register are classified as students
+
+- Applications
+
+  - Administrators can view applications
+
+  - Students can create new applications
+
 # Enhancements
 
 - Passwords are hashed using the `bsyncjs` module. When a new user registers, passwords are salted with the default of 10 rounds of processing before being stored in the database. At login, the entered password is checked against the hashed password using `compareSync` from the `bsync` module
