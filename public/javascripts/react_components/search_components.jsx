@@ -64,6 +64,8 @@ var SearchPage = React.createClass({
 	    		} else {
     				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
     			}
+	    	} else if (!formData[key] && user.hasOwnProperty(key)) {
+	    		return true;
 	    	}
 	    }
 		});
