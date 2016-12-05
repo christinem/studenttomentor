@@ -8,7 +8,6 @@ var html_routes = require('./routes/html');
 var app = express();
 
 require('./models/userlogin.js')();
-require('./routes/routes.js')(app);
 
 app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/'));
@@ -24,6 +23,8 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./routes/routes.js')(app);
 
  // --------- HTML Routes ------------ //
   var auth = function(req, res, next) { 
@@ -54,5 +55,5 @@ app.use(express.static(path.join(__dirname, 'public')));
     res.redirect('/login');
   });
 
-app.listen(3000);
-console.log('Listening on port 3000');
+app.listen(process.env.PORT || 3000);
+console.log('Listening on port 3000 if local or ' + toString(process.env.PORT)) + ' on heroku';

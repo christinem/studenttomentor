@@ -32,6 +32,11 @@
     "mocha": "^3.1.2"
   },
   "scripts": {
-    "test": "mocha --timeout 100000000"
+    "test": "mocha --timeout 100000000",
+    "start": "./node_modules/.bin/webpack -d && node server.js"
+  },
+  "engines": {
+    "node": "4.6.1"
+
   }
 }

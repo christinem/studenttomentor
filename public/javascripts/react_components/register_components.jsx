@@ -22,15 +22,15 @@ var RegisterForm = React.createClass ({
     var salt = bcrypt.genSaltSync(10);
 
     var data = {
-      email: this.refs.email.value,
-      password: bcrypt.hashSync(this.refs.password.value, salt),
-      first_name: this.refs.first_name.value,
-      last_name: this.refs.last_name.value,
-      student_number: this.refs.student_number.value,
+      email: $("#email").val(),
+      password: $("#password").val(),
+      first_name: $("#first_name").val(),
+      last_name: $("#last_name").val(),
+      student_number: $("#student_number").val(),
       gender: $("#gender").val(),
-      birthday: this.refs.birthday.value,
-      interests: [this.refs.interests.value], 
-      about_text: this.refs.about_text.value
+      birthday: $("#birthday").val(),
+      interests: [$("#interests").val()], 
+      about_text: $("#about_text").val()
     };
 
     $.ajax({
@@ -47,66 +47,47 @@ var RegisterForm = React.createClass ({
 			<div className="container">
         <div className="col-md-6 col-md-offset-3 text-center">
           <Panel title="Register">
-            <form id="register_form" action="">
-              <div className="form-group">
-                <label htmlFor="email">*Email: </label>
-                <br />
-                <input className="form-control" type="text" name="email" ref="email" placeholder="example_123@example.com" required pattern="[\w\.]+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />
-              </div>     
-              <div className="form-group">
-                <label htmlFor="password">*Password: </label>
-                <br />
-                <input className="form-control" type="password" name="password" ref="password" placeholder="Password" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="first_name">*First Name: </label>
-                <br />
-                <input className="form-control" type="text" name="first_name" ref="first_name" placeholder="John" required pattern="\D+" title="Must not contain digits." />         
-              </div>
-              <div className="form-group">
-                <label htmlFor="last_name">*Last Name: </label>
-                <br />
-                <input className="form-control" type="text" name="last_name" ref="last_name" placeholder="John" required pattern="\D+" title="Must not contain digits." />         
-              </div> 
-              <div className="form-group">
-                <label htmlFor="student_number">Student Number: </label>
-                <br />
-                <input className="form-control" type="text" name="student_number" ref="student_number" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />       
-              </div>
-              <p><b> Gender: </b></p> 
+            <div className="list-group-item"> 
+              <p> Email*: </p> <input type="text" id="email" placeholder="example_123@example.com" required pattern="[\w\.]+@[A-Za-z]+\.[A-Za-z]+" title="Please match the format of the example email." />     
+            </div> 
+            <div className="list-group-item"> 
+              <p> Password*: </p> <input type="password" id="password" placeholder="password" required />       
+            </div> 
+            <div className="list-group-item"> 
+              <p> First Name*: </p> <input type="text" id="first_name" placeholder="John" required pattern="\D+" title="Must not contain digits." />         
+            </div> 
+            <div className="list-group-item"> 
+              <p> Last Name*: </p> <input type="text" id="last_name" placeholder="Appleseed" required pattern="\D+" title="Must not contain digits." />
+            </div> 
+            <div className="list-group-item"> 
+              <p> Student Number: </p> <input type="text" id="student_number" placeholder="123456789" pattern="\d{9}(\d{1})?" title="Must contain 9 or 10 digits." />       
+            </div> 
+            <div className="list-group-item"> 
+              <p> Gender: </p> 
               <select id="gender">
-                <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
-              <br />
-              <br />
-              <div className="form-group">
-                <label htmlFor="birthday">Birthday: </label>
-                <br />
-                <input className="form-control" type="text" name="birthday" ref="birthday" placeholder="DD/MM/YYYY" pattern="\d{2}\/\d{2}\/\d{4}" title="Required format: DD/MM/YYYY" />      
-              </div>
-              <div className="form-group">
-                <label htmlFor="interests">Interests: </label>
-                <br />
-                <input className="form-control" type="text" name="interests" ref="interests" placeholder="Interests" /> 
-              </div>   
-              <div className="form-group">
-                <label htmlFor="about_text">About: </label>
-                <br />
-                <input className="form-control" type="text" name="about_text" ref="about_text" placeholder="About" /> 
-              </div> 
+            </div> 
+            <div className="list-group-item"> 
+               <p> Birthday: </p> <input type="text" id="birthday" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" title="Required format: DD/MM/YYYY" />      
+            </div> 
+            <div className="list-group-item"> 
+              <p> Interests: </p> <input type="text" id="interests" placeholder="Interests" />    
+            </div> 
+            <div className="list-group-item"> 
+              <p> About: </p> <input type="text" id="about_text" placeholder="About" />
+            </div> 
 
-              <div className="row">
-                <div className="col-md-12 text-center">
-                  <input id="register_button" 
-                       className="btn btn-default center-block" 
-                       type="submit" 
-                       value="Register"
-                       onClick={this.createUser} />
-                </div>
+            <div className="row">
+              <div className="col-md-12 text-center">
+                <a href={"/login"} 
+                   className="btn btn-default" 
+                   role="button"
+                   onClick={this.createUser}> Register
+                </a>
               </div>
-            </form>
+            </div>
           </Panel>
         </div>
       </div>
