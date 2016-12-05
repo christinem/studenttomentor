@@ -44,7 +44,7 @@ The model of the application is largely divided into two parts: Users and Applic
 
 # Workflow
 
-- You are greeting with an initial log in page in which you can log in using an existing account, or register for a new one. 
+- You are greeted with an initial log in page in which you can log in using an existing account, or register for a new one. 
 - If you click the register button, a register page will come where they enter in profile and user information (every field must be completed), and when you press "Register", it redirects you back to the log in page so you can log in with the new user if you so choose
 - When logged in, you will get one of two dashboards
   - An admin dashboard if logged in as an admin, which includes 
