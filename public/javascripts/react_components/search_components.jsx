@@ -49,31 +49,38 @@ var SearchPage = React.createClass({
 
 	filterUsers: function(formData) {
 		let users = this.state.users.splice(0);
-    var that = this;
-    users = users.filter(function(user) {
-      for (var key in formData) {
-      	if (user.hasOwnProperty(key)) {
-	  	    if (formData[key]) {
-		    		if (key == "interests") {
-		    			var queryArray = formData[key].split(";");
-		    			for (var query of queryArray) {
-		    				if (that.searchInterests(query, user["interests"])) {
-		    					return true;
-		    				}
+	    var that = this;
+	    users = users.filter(function(user) {
+	    	var return_val = false;
+		    for (var key in formData) {
+		      	if (user.hasOwnProperty(key)) {
+			  	    if (formData[key]) {
+			    		if (key == "interests") {
+			    			var queryArray = formData[key].split(";");
+			    			for (var query of queryArray) {
+			    				if (that.searchInterests(query, user["interests"] ? user["interests"] : "")) {
+			    					return_val = true;
+			    				} else {
+			    					return false;
+			    				}
+			    			}
+			    		} else {
+			    			if (user[key].toString().toLowerCase() == formData[key].toString().toLowerCase()) {
+			    				return_val = true;
+			    			} else {
+			    				return false;
+			    			}
 		    			}
-		    			return false;
-		    		} else {
-	    				return user[key].toString().toLowerCase() == formData[key].toString().toLowerCase();
-	    			}
-		    	} else {
-		    		return true;
-		    	}
-		    }
-	    }
+			    	} else {
+			    		return_val = true;
+			    	}
+			    }
+	    	}
+	    	return return_val;
 		});
 
-    this.setState({users: users});
-  },
+	    this.setState({users: users});
+    },
 
 	changeUserType: function(event) {
 		this.setState({type: event.currentTarget.value});
