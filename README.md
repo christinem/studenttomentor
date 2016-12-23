@@ -1,5 +1,7 @@
 # StudentToMentor
 
+Project created by Christine Murad, Christina Chen, and Jasmin Lantos for CSC309: Introduction to Web Programming.
+
 StudentToMentor is an app that aims to aid school administrators responsible for running a mentorship program in the matching of students to mentors. It features user profiles, where both students and mentors can detail their contact information, as well as additional information, such as interests, that can help match students with suitable mentors. A search page is included, where users can look up the profiles of other users. Students may submit a mentorship program application, where they express interest in the program and provide information about their career goals and preferences that may further help their pairing to a suitable mentor.
 
 # Hosted on Heroku
