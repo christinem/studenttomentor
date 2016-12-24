@@ -1,9 +1,0 @@
-Wow amazing idea!
-
-Your plan looks good to me. The user interface is clear and all actions have been specified. As long as you stick to the plan (from "Creating and Updating a Profile/ Logging In and Out", to "User Dashboard", and finally to "Matching Students with Mentors"), you’ll finally get it done.
-
-It actually requires a lot of work to get the web app fully implemented. Since there is a hard deadline for this project, I suggest you first finish some simple pieces of the functionalities on the plan, then use UML diagram and/or action diagram to help you organize (who does what), and if there is time, complete the web app.
-
-Good luck!
-
-- Shen
